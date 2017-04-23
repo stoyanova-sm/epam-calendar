@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "font-awesome": "^4.7.0",
     "http-server": "^0.9.0"
   },
   "devDependencies": {},
