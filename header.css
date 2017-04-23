@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.top-header {
+    height: 28px;
+    background-color: #39c2d7;
+}
+
+    .sharepoint{
+        float: left;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+        .sharepoint > img {
+            width: 21px;
+            height: 18px;
+            margin-left: 22px;
+        }
+
+        .sharepoint > span {
+            color: #fff;
+            font-family: Oswald, serif;
+            font-size: 14px;
+            font-weight: 400;
+            text-transform: uppercase;
+            padding-left: 9px;
+        }
+
+    .links {
+        float: right;
+        margin-right: 32px;
+    }
+
+        .links li {
+            list-style-type: none;
+            display: inline;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        .links a {
+            text-decoration: none;
+            font-family: "Source Sans Pro", serif;
+            font-size: 14px;
+            font-weight: 400;
+            color: #fff;
+            line-height: 28px;
+        }
+
+    .user {
+        float: right;
+        font-family: "Source Sans Pro", serif;
+        font-size: 14px;
+        font-weight: 400;
+        color: #454446;
+        line-height: 28px;
+        position: relative;
+        background-color: #efefef;
+        padding-left: 22px;
+    }
+
+        .user::after {
+            font-family: FontAwesome;
+            content: "\f0d7";
+            margin-left: 15px;
+        }
+
+    .icons {
+        float: right;
+        padding: 0 9px 0 14px;
+        background-color: #efefef;
+    }
+
+    .icons i {
+        margin-right: 9px;
+        color: #79787a;
+        line-height: 28px;
+        font-size: 16px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
