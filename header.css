@@ -3,6 +3,14 @@
     padding: 0;
 }
 
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style-type: none;
+}
+
 .top-header {
     height: 28px;
     background-color: #39c2d7;
@@ -36,14 +44,11 @@
     }
 
         .links li {
-            list-style-type: none;
             display: inline;
-            text-decoration: none;
             margin-left: 20px;
         }
 
         .links a {
-            text-decoration: none;
             font-family: "Source Sans Pro", serif;
             font-size: 14px;
             font-weight: 400;
@@ -81,6 +86,75 @@
         line-height: 28px;
         font-size: 16px;
     }
+
+.middle-header {
+    height: 32px;
+    background-color: #efefef;
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+
+    .middle-header a {
+        display: inline-block;
+        text-transform: uppercase;
+        font-family: "Source Sans Pro", serif;
+    }
+
+    .middle-header-nav {
+        flex-basis: 50%;
+        display: flex;
+        margin-left: 20px;
+    }
+
+        .middle-header-nav a {
+            font-size: 10px;
+            font-weight: 600;
+            color: #666;
+            padding: 6px 9px;
+            margin-right: 14px;
+        }
+
+            .middle-header-nav a:hover {
+                background-color: #36c3d8;
+                color: #fff;
+            }
+
+    .middle-header-actions {
+        flex-basis: 50%;
+        display: flex;
+        justify-content: flex-end;
+        margin-right: 32px;
+    }
+
+        .middle-header-actions a {
+            font-size: 11px;
+            color: #9a9a9a;
+            margin-left: 18px;
+        }
+
+            .middle-header-actions a::before {
+                font-family: FontAwesome;
+                margin-right: 6px;
+            }
+
+                .share::before {
+                    content: "\f1e0";
+                }
+
+                .follow::before {
+                    content: "\f006";
+                }
+
+                .edit::before {
+                    content: "\f040";
+                }
+
+    .expand {
+        margin-right: 18px;
+    }
+
+
 
 
 
