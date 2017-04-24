@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.nav {
+    width: 250px;
+    background-color: #39c2d7;
+}
+
+    .nav li {
+        height: 48px;
+        border-bottom: 1px solid #5dcbdc;
+    }
+
+        .nav a {
+            display: block;
+            height: 100%;
+            color: #fff;
+            font-family: Oswald;
+            font-size: 14px;
+            font-weight: 400;
+            text-transform: uppercase;
+            line-height: 48px;
+        }
+
+            .nav a::before {
+                font-family: FontAwesome;
+                color: #fff;
+                font-size: 22px;
+                font-weight: 400;
+                padding-left: 31px;
+            }
+
+                .home::before {
+                    content: "\f015";
+                }
+
+                .docs::before {
+                    content: "\f0f6";
+                }
+
+                .calendar::before {
+                    content: "\f073 ";
+                }
+
+                .archive::before {
+                    content: "\f187 ";
+                }
+
+                .nom::before {
+                    content: "\f0ca";
+                }
+
+                .org::before {
+                    content: "\f0f2 ";
+                }
+
+
+
