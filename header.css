@@ -150,10 +150,49 @@ li {
                     content: "\f040";
                 }
 
-    .expand {
-        margin-right: 18px;
+    .expand a{
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url(images/arrows.png);
+        margin-right: 19px;
     }
 
+.header-bottom {
+    height: 62px;
+    background-color: #454446;
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+
+    .epam-logo {
+        height: 100%;
+        margin-left: 20px;
+        display: flex;
+        align-items: center;
+    }
+
+        .epam-logo a {
+            display: inline-block;
+            margin: 7px 22px 0px 0px;
+        }
+
+        .epam-logo span {
+            display: inline-block;
+            color: #7ae6f7;
+            font-family: Oswald;
+            font-size: 18px;
+            font-weight: 400;
+            text-transform: uppercase;
+            margin: 22px 0;
+        }
+
+    .fa-search {
+         font-size: 20px;
+         color: #cdcdcd;
+         margin-right: 19px;
+    }
 
 
 
