@@ -95,11 +95,15 @@ li {
     align-items: center
 }
 
-    .middle-header a {
-        display: inline-block;
-        text-transform: uppercase;
-        font-family: "Source Sans Pro", serif;
+    .expand {
+        height: 16px;
     }
+
+        .middle-header a {
+            display: inline-block;
+            text-transform: uppercase;
+            font-family: "Source Sans Pro", serif;
+        }
 
     .middle-header-nav {
         flex-basis: 50%;

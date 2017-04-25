@@ -3,7 +3,7 @@
     padding: 0;
 }
 
-/*add flex-basis and shrink to NAV and CONTROL containers*/
+ /*TODO: add flex-basis and shrink to NAV and CONTROL containers, check font awesome styles*/
 
 body {
     display: flex;
