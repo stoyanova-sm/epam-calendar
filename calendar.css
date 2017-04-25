@@ -3,8 +3,82 @@
     padding: 0;
 }
 
+/*TODO: bottom background should be fixed according to design (goes under footer)*/
 main {
-    background-color: red;
-    margin: 15px 14px 0 17px;
+    margin: 15px 15px 0px 15px; /* TODO: Ask Vyacheslav about this margin, margin: 15px 14px 0 17px; */
     flex: 1;
+    display: flex;
+    flex-direction: column;
 }
+
+    main header {
+        height: 40px;
+        background-color: #666;
+        display: flex;
+        align-items: center;
+    }
+
+        .back, .forward {
+            color: #feffff;
+            font-size: 20px;
+            font-weight: 400;
+        }
+
+        .back {
+            margin-left: 20px;
+        }
+
+        .forward {
+            margin-left: 5px;
+        }
+
+        main header h1 {
+            color: #feffff;
+            font-family: Oswald;
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: 400;
+            padding-left: 9px;
+        }
+
+    .main-calendar {
+        border: 2px solid #e7e7e7;
+        border-top: none;
+        padding: 0 14px 25px 8px; /* TODO: ask Vyacheslav about different padding on the left and on the right (8 and 14)*!*/
+    }
+
+        .weekdays {
+            height: 25px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+            .weekdays div {
+                flex: 1;
+                padding-left: 13px;
+                color: #666;
+                font-family: "Source Sans Pro", serif;
+                font-size: 16px;
+                font-weight: 600;
+            }
+
+        .net {
+            display: flex;
+            flex-flow: row wrap; /*flex-flow: <'flex-direction'> || <'flex-wrap'>*/
+            align-items: stretch;
+            align-content: stretch;
+            border: 2px solid #d5d5d5;
+        }
+
+            .day{
+                outline: 1px solid #d5d5d5;
+                flex: 1;
+                min-width: calc(100% / 7);
+            }
+
+                .day:before {
+                    content: "";
+                    padding-top: 100%;
+                    float: left;
+                }
