@@ -4,14 +4,26 @@
 }
 
 .control {
-    width: 227px;
+    display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox;  /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+    display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
 
-    background-color: green;
+    width: 227px;
     margin: 15px 12px 8px 0;
     flex-direction: column;
+
+                                                transition: all 0.75s ease-out 0.1s;
+                                                overflow: hidden;
 }
+
     .control h1 {
-        display: flex;
+        display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+        display: -ms-flexbox;  /* TWEENER - IE 10 */
+        display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+        display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+
+        width: 227px;
         height: 40px;
         background-color: #666;
         color: #feffff;

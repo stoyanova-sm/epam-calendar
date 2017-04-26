@@ -5,16 +5,24 @@
 
 /*TODO: bottom background should be fixed according to design (goes under footer)*/
 main {
-    margin: 15px 15px 0px 15px; /* TODO: Ask Vyacheslav about this margin, margin: 15px 14px 0 17px; */
+    display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox;  /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+    display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+
+    margin: 15px 15px 0px 15px; /* TODO: Ask Vyacheslav about this margin, margin: 15px 15px 0 17px; */
     flex: 1;
-    display: flex;
     flex-direction: column;
 }
 
     main header {
+        display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+        display: -ms-flexbox;  /* TWEENER - IE 10 */
+        display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+        display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+
         height: 40px;
         background-color: #666;
-        display: flex;
         align-items: center;
     }
 
@@ -48,8 +56,12 @@ main {
     }
 
         .weekdays {
+            display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+            display: -ms-flexbox;  /* TWEENER - IE 10 */
+            display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+            display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+
             height: 25px;
-            display: flex;
             flex-direction: row;
             align-items: center;
         }
@@ -64,7 +76,11 @@ main {
             }
 
         .net {
-            display: flex;
+            display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+            display: -ms-flexbox;  /* TWEENER - IE 10 */
+            display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+            display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+
             flex-flow: row wrap; /*flex-flow: <'flex-direction'> || <'flex-wrap'>*/
             align-items: stretch;
             align-content: stretch;
