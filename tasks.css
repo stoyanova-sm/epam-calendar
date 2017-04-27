@@ -1,0 +1,129 @@
+.tasks {
+	flex: 1;
+	position: relative;
+
+}
+
+.tasks > div:nth-child(2) { top: 20% }
+.tasks > div:nth-child(3) { top: 40% }
+.tasks > div:nth-child(4) { top: 60% }
+.tasks > div:nth-child(5) { top: 80% }
+
+	.task {
+		height: 20%; /* TODO: ask Vyacheslav about height, made it adaptive, maybe need fixed according to psd*/
+		position: absolute;
+		z-index: 1;
+
+		overflow: hidden;
+		white-space: nowrap;
+	}
+
+		.task:hover {
+			z-index: 2;
+		}
+
+.task-label {
+	height: 100%;
+	width: 10px;
+	float: left;
+	margin-top: 1px;
+}
+
+.task-extended .task-label {
+	background: none;
+}
+
+.task.task-more .task-contents {
+	margin: -1px;
+}
+.task.task-more a {
+	color: #666;
+	font-family: "Source Sans Pro", serif;
+	font-size: 12px;
+	font-weight: 300;
+}
+
+.task-contents {
+	width: 100%;
+	height: 100%;
+	margin-top: 1px;
+}
+
+.task-contents a {
+	color: #fff;
+	font-family: "Source Sans Pro", serif;
+	font-size: 14px;
+	font-weight: 600;
+	padding: 0 8px;
+	display: flex;
+	align-items: center;
+	height: 100%;
+}
+
+.task-duration-1 {
+	width: 100%;
+}
+
+.task-duration-2 {
+	width: 200%;
+}
+
+.task-duration-3 {
+	width: 300%;
+}
+
+.task-duration-4 {
+	width: 400%;
+}
+
+.task-duration-5 {
+	width: 500%;
+}
+
+.task-duration-6 {
+	width: 600%;
+}
+
+.task-duration-7 {
+	width: 700%;
+}
+
+.task-color-green .task-label {
+	background: #6a8228;
+}
+
+.task-color-green .task-contents {
+	background: #a4c743;
+}
+
+.task-color-yellow .task-label {
+	background: #9b7f1d;
+}
+
+.task-color-yellow .task-contents {
+	background: #edc231;
+}
+
+.task-color-red .task-label {
+	background: #76122a;
+}
+
+.task-color-red .task-contents {
+	background: #b42245;
+}
+
+.task-color-violet .task-label {
+	background: #60517c;
+}
+
+.task-color-violet .task-contents {
+	background: #947fbe;
+}
+
+.task-color-teal .task-label {
+	background: #207871;
+}
+
+.task-color-teal .task-contents {
+	background: #36b8ad;
+}
