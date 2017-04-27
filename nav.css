@@ -25,6 +25,8 @@
         }
 
             .nav a::before {
+                display: inline-block;
+                width: 42px;
                 font-family: FontAwesome;
                 color: #fff;
                 font-size: 22px;
@@ -38,6 +40,15 @@
 
                 .docs::before {
                     content: "\f0f6";
+                }
+
+                .docs::after {
+                    content: "\f0dd";
+                    font-family: FontAwesome;
+                    color: #fff;
+                    font-size: 22px;
+                    font-weight: 400;
+                    padding-left: 68px;
                 }
 
                 .calendar::before {
