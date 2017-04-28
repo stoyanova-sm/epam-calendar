@@ -20,6 +20,7 @@ body {
 
     flex-direction: column;
     min-height: 100vh;
+    min-width: 800px;
 }
 
     .main-content {
@@ -28,6 +29,6 @@ body {
         display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
         display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
 
-        flex:1;
+        flex-grow:1; /*for ie*/
         flex-direction: row;
     }

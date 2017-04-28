@@ -92,10 +92,12 @@ li {
     display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
     display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
 
+
+    width: 100%; /*for ie*/
     height: 32px;
     background-color: #efefef;
     justify-content: space-between;
-    align-items: center
+    align-items: center;
 }
 
     .expand {
@@ -114,7 +116,7 @@ li {
         display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
         display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
 
-        flex-basis: 50%;
+        flex-grow: 1;
         margin-left: 20px;
     }
 
@@ -137,8 +139,6 @@ li {
         display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
         display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
 
-        flex-basis: 50%;
-        justify-content: flex-end;
         margin-right: 32px;
     }
 
