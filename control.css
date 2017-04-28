@@ -13,8 +13,7 @@
     margin: 15px 12px 8px 0;
     flex-direction: column;
 
-                                                transition: all 0.75s ease-out 0.1s;
-                                                overflow: hidden;
+    transition: all 0.75s ease-out 0.1s;
 }
 
     .control h1 {
@@ -39,14 +38,20 @@
             content: "\f06e ";
             font-size: 20px;
             font-weight: 400;
-            padding:0 14px 0 19px;
+            padding: 0 14px 0 19px;
+
+            transition: all 0.75s ease-out 0.1s;
         }
 
-        .list {
-            border: 2px solid #e7e7e7;
-            border-top: none;
-            flex:1;
-        }
+            .list {
+                width: 223px;     /*227-2*2 => 2px-border*/
+                border: 2px solid #e7e7e7;
+                border-top: none;
+                flex: 1;
+
+                transition: all 0.75s ease-out 0.1s;
+                opacity: 1;
+            }
 
             .list > div {
                 padding-left: 7px;
@@ -54,11 +59,31 @@
                 height: 40px;
             }
 
+                .list >  div:nth-child(odd) {
+                    background-color: #f1f1f1;
+                }
+
                 .list > div > div {
                     display: inline-block;
                     width: 33.3%;
                     color: #111;
-                    font-family: "Source Sans Pro";
+                    font-family: "Source Sans Pro", serif;
                     font-size: 14px;
                     font-weight: 400;
+                    line-height: 40px;
                 }
+
+@media (max-width: 1200px) {
+    .control {
+        width: 25px;
+        margin-right: 0;
+    }
+
+    .control .list {
+        opacity: 0;
+    }
+
+    .control h1::before {
+        padding:0 14px 0 3px;
+    }
+}
