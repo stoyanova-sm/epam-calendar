@@ -209,7 +209,7 @@ li {
         .epam-logo span {
             display: inline-block;
             color: #7ae6f7;
-            font-family: Oswald;
+            font-family: Oswald,serif;
             font-size: 18px;
             font-weight: 400;
             text-transform: uppercase;
