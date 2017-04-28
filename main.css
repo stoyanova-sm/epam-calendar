@@ -10,7 +10,13 @@
     padding: 0;
 }
 
- /*TODO: add flex-basis and shrink to NAV and CONTROL containers, check font awesome styles*/
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style-type: none;
+}
 
 body {
     display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
