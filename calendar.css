@@ -84,25 +84,15 @@ main {
             display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
 
             flex-flow: row wrap; /*flex-flow: <'flex-direction'> || <'flex-wrap'>*/
-            /*align-items: stretch;*/
-            /*align-content: stretch;*/
-            border: 2px solid #d5d5d5;
+            border: 1px solid #d5d5d5;
         }
 
             .day-wrapper {
-                outline: 1px solid #d5d5d5;
+                border: 1px solid #d5d5d5;
                 flex: 1;
-                flex-basis: 14%;
+                flex-basis: 13.8%;
             }
-                .day-wrapper.day-current {
-                    outline: 2px solid #36c3d8;
-
-                    /*border: 2px solid #36c3d8;*/
-                    /*z-index: 0;*/
-                    /*margin: -3px;*/
-                    /*outline: 0;*/
-                    /*border-radius: 2px;*/
-                }
+                .day-wrapper.day-current {}
 
                 .day-wrapper::before {
                     content: "";
@@ -115,6 +105,7 @@ main {
                     height: 100%;
                     display: flex;
                     flex-direction: column;
+                    position: relative;
                 }
 
                     .date {
@@ -123,4 +114,16 @@ main {
                         font-size: 16px;
                         font-weight: 600;
                         padding-left: 4px;
+                    }
+
+                    .day-current-border {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                    }
+
+                    .day-current .day-current-border {
+                        border: 3px solid #39c2d7;
+                        border-radius: 3px;
+                        margin: -3px;
                     }
