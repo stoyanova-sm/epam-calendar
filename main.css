@@ -1,3 +1,10 @@
+@import "./header.css";
+@import "./nav.css";
+@import "./tasks.css";
+@import "./calendar.css";
+@import "./control.css";
+@import "./footer.css";
+
 * {
     margin: 0;
     padding: 0;

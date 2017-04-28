@@ -1,18 +1,10 @@
-@import "./tasks.css";
-
-* {
-    margin: 0;
-    padding: 0;
-}
-
-/*TODO: bottom background should be fixed according to design (goes under footer)*/
 main {
     display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
     display: -ms-flexbox;  /* TWEENER - IE 10 */
     display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
     display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
 
-    margin: 15px 15px 0 15px; /* TODO: Ask Vyacheslav about this margin, margin: 15px 15px 0 17px; */
+    margin: 15px 15px 0 15px;
     flex: 1;
     flex-direction: column;
 }
@@ -54,7 +46,7 @@ main {
     .main-calendar {
         border: 2px solid #e7e7e7;
         border-top: none;
-        padding: 0 14px 25px 8px; /* TODO: ask Vyacheslav about different padding on the left and on the right (8 and 14)*!*/
+        padding: 0 14px 25px 8px; /* different padding on the left and on the right according to psd(8 and 14)*/
     }
 
         .weekdays {
