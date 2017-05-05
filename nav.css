@@ -20,6 +20,10 @@
             line-height: 48px;
         }
 
+            nav a:hover {
+                background-color: #31a5b7;
+            }
+
             .nav a::before {
                 display: inline-block;
                 width: 42px;
