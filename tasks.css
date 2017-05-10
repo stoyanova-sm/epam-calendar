@@ -11,13 +11,13 @@
 	.task {
 		height: 20%;
 		position: absolute;
-		z-index: 1;
+		z-index: 2;
 		overflow: hidden;
 		white-space: nowrap;
 	}
 
 		.task:hover {
-			z-index: 2;
+			z-index: 3;
 			text-decoration: underline;
 			color: #fff;
 		}
