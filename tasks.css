@@ -42,7 +42,7 @@
 				font-family: "Source Sans Pro", serif;
 				font-size: 14px;
 				font-weight: 600;
-				padding: 0 8px;
+				padding: 0 5px;
 				display: flex;
 				align-items: center;
 				height: 100%;
@@ -67,7 +67,7 @@
 				.task.task-more a::before {
 					content: "\f0d7";
 					font-family: FontAwesome;
-					margin-left: -5px;
+					margin-left: -2px;
 					padding-right: 4px;
 				}
 
@@ -140,5 +140,5 @@
 		}
 
 		.task-extended .task-label {
-			background: none;
+			display: none;
 		}
