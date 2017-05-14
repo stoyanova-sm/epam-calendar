@@ -13,31 +13,23 @@
     padding: 0;
 }
 
-a {
-    text-decoration: none;
-}
-
-li {
-    list-style-type: none;
-}
-
 body {
-    display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
-    display: -ms-flexbox;  /* TWEENER - IE 10 */
-    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
-    display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
-
+    display: flex;
     flex-direction: column;
     min-height: 100vh;
     min-width: 800px;
-}
 
     .main-content {
-        display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
-        display: -ms-flexbox;  /* TWEENER - IE 10 */
-        display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
-        display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
-
-        flex-grow:1; /*for ie*/
+        display: flex;
+        flex-grow: 1; /*for ie*/
         flex-direction: row;
     }
+
+    a {
+        text-decoration: none;
+    }
+
+    li {
+        list-style-type: none;
+    }
+}
