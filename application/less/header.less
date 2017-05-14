@@ -1,0 +1,236 @@
+.top-header {
+    display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox;  /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+    display: flex;
+    width: 100%;
+    height: 28px;
+    background-color: #39c2d7;
+}
+
+    .sharepoint{
+        display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+        display: -ms-flexbox;  /* TWEENER - IE 10 */
+        display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+        display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+
+        flex-grow: 1;
+        height: 100%;
+        align-items: center;
+    }
+
+        .sharepoint > img {
+            width: 21px;
+            height: 18px;
+            margin-left: 22px;
+        }
+
+        .sharepoint > span {
+            color: #fff;
+            font-family: Oswald, serif;
+            font-size: 14px;
+            font-weight: 400;
+            text-transform: uppercase;
+            padding-left: 9px;
+        }
+
+    .links {
+        float: right;
+        margin-right: 32px;
+    }
+
+        .links li {
+            display: inline;
+            margin-left: 20px;
+        }
+
+        .links a {
+            font-family: "Source Sans Pro", serif;
+            font-size: 14px;
+            font-weight: 400;
+            color: #fff;
+            line-height: 28px;
+        }
+
+    .user {
+        float: right;
+        font-family: "Source Sans Pro", serif;
+        font-size: 14px;
+        font-weight: 400;
+        color: #454446;
+        line-height: 28px;
+        position: relative;
+        background-color: #efefef;
+        padding-left: 22px;
+    }
+
+        .user::after {
+            font-family: FontAwesome;
+            content: "\f0d7";
+            margin-left: 15px;
+        }
+
+    .icons {
+        float: right;
+        padding: 0 9px 0 14px;
+        background-color: #efefef;
+    }
+
+    .icons i {
+        margin-right: 9px;
+        color: #79787a;
+        line-height: 28px;
+        font-size: 16px;
+    }
+
+.middle-header {
+    display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox;  /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+    display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+
+
+    width: 100%; /*for ie*/
+    height: 32px;
+    background-color: #efefef;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .expand {
+        height: 16px;
+    }
+
+        .middle-header a {
+            display: inline-block;
+            text-transform: uppercase;
+            font-family: "Source Sans Pro", serif;
+        }
+
+    .middle-header-nav {
+        display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+        display: -ms-flexbox;  /* TWEENER - IE 10 */
+        display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+        display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+
+        flex-grow: 1;
+        margin-left: 20px;
+    }
+
+        .middle-header-nav a {
+            font-size: 10px;
+            font-weight: 600;
+            color: #666;
+            padding: 6px 9px;
+            margin-right: 14px;
+        }
+
+            .middle-header-nav a:hover {
+                background-color: #36c3d8;
+                color: #fff;
+            }
+
+    .middle-header-actions {
+        display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+        display: -ms-flexbox;  /* TWEENER - IE 10 */
+        display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+        display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+
+        margin-right: 32px;
+    }
+
+        .middle-header-actions a {
+            font-size: 11px;
+            color: #9a9a9a;
+            margin-left: 18px;
+        }
+
+            .middle-header-actions a::before {
+                font-family: FontAwesome;
+                margin-right: 6px;
+            }
+
+                .share::before {
+                    content: "\f1e0";
+                }
+
+                .follow::before {
+                    content: "\f006";
+                }
+
+                .edit::before {
+                    content: "\f040";
+                }
+
+    .expand a{
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url(../images/arrows.png);
+        margin-right: 19px;
+    }
+
+.header-bottom {
+    display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox;  /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+    display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+
+    height: 62px;
+    background-color: #454446;
+    justify-content: space-between;
+    align-items: center
+}
+
+    .epam-logo {
+        display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+        display: -ms-flexbox;  /* TWEENER - IE 10 */
+        display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+        display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+
+        height: 100%;
+        margin-left: 20px;
+        align-items: center;
+    }
+
+        .epam-logo a {
+            display: inline-block;
+            margin: 7px 22px 0px 0px;
+        }
+
+        .epam-logo span {
+            display: inline-block;
+            color: #7ae6f7;
+            font-family: Oswald,serif;
+            font-size: 18px;
+            font-weight: 400;
+            text-transform: uppercase;
+            margin: 22px 0;
+        }
+
+    .fa-search {
+         font-size: 20px;
+         color: #cdcdcd;
+         margin-right: 19px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
