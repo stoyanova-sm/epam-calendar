@@ -45,15 +45,22 @@ module.exports = {
 						loader: 'postcss-loader',
 						options: {
 							sourceMap: true,
-							plugins: (loader) => require('autoprefixer')(),
+							plugins: (loader) => [
+								require('postcss-import')({ root: loader.resourcePath }),
+								require('autoprefixer')()
+							]
 						}
+
 					}, {
 						loader: 'less-loader',
 						options: {
 							sourceMap: true
 						}
 					}]
-			}),
+			})
+		},  {
+			test: /\.(ttf|otf|eot|svg|woff(2)?)$/,
+			use: ['file-loader?name=/fonts/[name].[ext]']
 		}]
 	},
 

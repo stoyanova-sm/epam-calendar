@@ -1,7 +1,7 @@
 
 require('../calendar.html');
+require('font-awesome/less/font-awesome.less');
 require('../less/main.less');
-
 
 console.log("zxcvbn");
 let a = 10;
