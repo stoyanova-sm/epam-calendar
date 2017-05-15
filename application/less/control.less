@@ -1,34 +1,24 @@
 .control {
-    display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
-    display: -ms-flexbox;  /* TWEENER - IE 10 */
-    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
-    display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
-
+    display: flex;
     width: 227px;
     margin: 15px 12px 8px 0;
     flex-direction: column;
 
     transition: all 0.75s ease-out 0.1s;
-}
 
-    .control h1 {
-        display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
-        display: -ms-flexbox;  /* TWEENER - IE 10 */
-        display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
-        display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
-
+    h1 {
+        display: flex;
         width: 227px;
         height: 40px;
-        background-color: #666;
+        background-color: @grey-color;
         color: #feffff;
         font-family: Oswald, serif;
         font-size: 12px;
         font-weight: 400;
         text-transform: uppercase;
         align-items: center;
-    }
 
-        .control h1::before {
+        &::before {
             font-family: FontAwesome;
             content: "\f06e ";
             font-size: 20px;
@@ -37,53 +27,55 @@
 
             transition: all 0.75s ease-out 0.1s;
         }
+    }
 
-            .list {
-                width: 223px;     /*227-2*2 => 2px-border*/
-                border: 2px solid #e7e7e7;
-                border-top: none;
-                flex: 1;
+    .list {
+        width: 223px; //227-2*2 => 2px-border
+        border: 2px solid #e7e7e7;
+        border-top: none;
+        flex: 1;
 
-                transition: all 0.75s ease-out 0.1s;
-                opacity: 1;
+        transition: all 0.75s ease-out 0.1s;
+        opacity: 1;
+
+        & > div {
+            padding-left: 7px;
+            font-size: 0; //remove spaces
+            height: 40px;
+
+            & > div {
+                display: inline-block;
+                width: 33.3%;
+                color: #111;
+                font-family: "Source Sans Pro", serif;
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 40px;
             }
+        }
 
-            .list > div {
-                padding-left: 7px;
-                font-size: 0;
-                height: 40px;
-            }
-
-                .list >  div:nth-child(odd) {
-                    background-color: #f1f1f1;
-                }
-
-                .list > div > div {
-                    display: inline-block;
-                    width: 33.3%;
-                    color: #111;
-                    font-family: "Source Sans Pro", serif;
-                    font-size: 14px;
-                    font-weight: 400;
-                    line-height: 40px;
-                }
+        & > div:nth-child(odd) {
+            background-color: #f1f1f1;
+        }
+    }
+}
 
 @media (max-width: 1200px) {
     .control {
         width: 30px;
         margin-right: 0;
         overflow: hidden;
-    }
 
-    .control .list {
-        opacity: 0;
-    }
+        .list {
+            opacity: 0;
+        }
 
-    .control h1::before {
-        padding:0 14px 0 5px;
-    }
+        h1::before {
+            padding: 0 14px 0 5px;
+        }
 
-        .control h1:hover {
+        h1:hover {
             cursor: pointer
         }
     }
+}
