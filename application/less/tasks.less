@@ -1,12 +1,19 @@
 .tasks {
 	flex: 1;
 	position: relative;
-}
 
-	.tasks > div:nth-child(2) { top: 20% }
-	.tasks > div:nth-child(3) { top: 40% }
-	.tasks > div:nth-child(4) { top: 60% }
-	.tasks > div:nth-child(5) { top: 80% }
+	& > div:nth-child(2) {
+		top: 20%
+	}
+	& > div:nth-child(3) {
+		top: 40%
+	}
+	& > div:nth-child(4) {
+		top: 60%
+	}
+	& > div:nth-child(5) {
+		top: 80%
+	}
 
 	.task {
 		height: 20%;
@@ -14,31 +21,27 @@
 		z-index: 2;
 		overflow: hidden;
 		white-space: nowrap;
-	}
 
-		.task:hover {
+		&:hover {
 			z-index: 3;
 			text-decoration: underline;
-			color: #fff;
+			color: @white-color;
 		}
 
-			.task-label {
-				height: 100%;
-				width: 8px;
-				float: left;
-				margin-top: 1px;
-			}
-
-
-
-		.task-contents {
-			width: 100%;
+		&-label {
 			height: 100%;
+			width: 8px;
+			float: left;
 			margin-top: 1px;
 		}
 
-			.task-contents a {
-				color: #fff;
+		&-contents {
+			width: 100%;
+			height: 100%;
+			margin-top: 1px;
+
+			a {
+				color: @white-color;
 				font-family: "Source Sans Pro", serif;
 				font-size: 14px;
 				font-weight: 600;
@@ -47,98 +50,96 @@
 				align-items: center;
 				height: 100%;
 			}
+		}
+	}
 
-			.task.task-more .task-contents {
-				margin: -1px;
+	.task.task-more {
+
+		.task-contents {
+			margin: -1px;
+		}
+
+		a {
+			color: #666;
+			font-family: "Source Sans Pro", serif;
+			font-size: 12px;
+			font-weight: 300;
+
+			&::before {
+				content: "\f0d7";
+				font-family: FontAwesome;
+				margin-left: -2px;
+				padding-right: 4px;
 			}
-
-
-			.task.task-more a {
-				color: #666;
-				font-family: "Source Sans Pro", serif;
-				font-size: 12px;
-				font-weight: 300;
-			}
-
-				.task.task-more:hover {
-					text-decoration: none;
-				}
-
-				.task.task-more a::before {
-					content: "\f0d7";
-					font-family: FontAwesome;
-					margin-left: -2px;
-					padding-right: 4px;
-				}
-
-		.task-duration-1 {
-			width: 100%;
 		}
 
-		.task-duration-2 {
-			width: calc(200% + 2px);
+		&:hover {
+			text-decoration: none;
 		}
+	}
 
-		.task-duration-3 {
-			width: calc(300% + 4px);
+	.generate-task-duration(@i: 1) when (@i <= 7) {
+		.task-duration-@{i} {
+			@a: 100% * @i;
+			@b:(@i - 1) * 2px;
+			width: calc(~"@{a} + @{b}");
 		}
+		.generate-task-duration(@i + 1);
+	}
 
-		.task-duration-4 {
-			width: calc(400% + 6px);
-		}
+	.generate-task-duration();
 
-		.task-duration-5 {
-			width: calc(500% + 8px);
-		}
+	//.task-duration-1 {
+	//	width: 100%;
+	//}
+	//.task-duration-2 {
+	//	width: calc(200% + 2px);
+	//}
+	//.task-duration-3 {
+	//	width: calc(300% + 4px);
+	//}
 
-		.task-duration-6 {
-			width: calc(600% + 10px);
-		}
+	.task-color-green .task-label {
+		background: #6a8228;
+	}
 
-		.task-duration-7 {
-			width: calc(700% + 12px);
-		}
+	.task-color-green .task-contents {
+		background: #a4c743;
+	}
 
-		.task-color-green .task-label {
-			background: #6a8228;
-		}
+	.task-color-yellow .task-label {
+		background: #9b7f1d;
+	}
 
-		.task-color-green .task-contents {
-			background: #a4c743;
-		}
+	.task-color-yellow .task-contents {
+		background: #edc231;
+	}
 
-		.task-color-yellow .task-label {
-			background: #9b7f1d;
-		}
+	.task-color-red .task-label {
+		background: #76122a;
+	}
 
-		.task-color-yellow .task-contents {
-			background: #edc231;
-		}
+	.task-color-red .task-contents {
+		background: #b42245;
+	}
 
-		.task-color-red .task-label {
-			background: #76122a;
-		}
+	.task-color-violet .task-label {
+		background: #60517c;
+	}
 
-		.task-color-red .task-contents {
-			background: #b42245;
-		}
+	.task-color-violet .task-contents {
+		background: #947fbe;
+	}
 
-		.task-color-violet .task-label {
-			background: #60517c;
-		}
+	.task-color-teal .task-label {
+		background: #207871;
+	}
 
-		.task-color-violet .task-contents {
-			background: #947fbe;
-		}
+	.task-color-teal .task-contents {
+		background: #36b8ad;
+	}
 
-		.task-color-teal .task-label {
-			background: #207871;
-		}
-
-		.task-color-teal .task-contents {
-			background: #36b8ad;
-		}
-
-		.task-extended .task-label {
-			display: none;
-		}
+	.task-extended .task-label {
+		display: none;
+	}
+}
