@@ -1,24 +1,17 @@
 main {
     display: flex;
-
     margin: 15px 15px 0 15px;
     flex: 1;
     flex-direction: column;
-}
 
-    main header {
-        display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
-        display: -ms-flexbox;  /* TWEENER - IE 10 */
-        display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
-        display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
-
+    header {
+        display: flex;
         height: 40px;
-        background-color: #666;
+        background-color: @grey-color;
         align-items: center;
-    }
 
         .back, .forward {
-            color: #feffff;
+            color: @white-header-color;
             font-size: 20px;
             font-weight: 400;
         }
@@ -31,55 +24,49 @@ main {
             margin-left: 5px;
         }
 
-        main header h1 {
-            color: #feffff;
-            font-family: Oswald,serif;
+        h1 {
+            color: @white-header-color;
+            font-family: Oswald, serif;
             font-size: 12px;
             text-transform: uppercase;
             font-weight: 400;
             padding-left: 9px;
         }
-
-    .main-calendar {
-        border: 2px solid #e7e7e7;
-        border-top: none;
-        padding: 0 14px 25px 8px; /* different padding on the left and on the right according to psd(8 and 14)*/
     }
 
-        .weekdays {
-            display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
-            display: -ms-flexbox;  /* TWEENER - IE 10 */
-            display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
-            display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+    .main-calendar {
+        border: 2px solid @grey-border-color;
+        border-top: none;
+        padding: 0 14px 25px 8px; // different padding on the left and on the right according to psd(8 and 14)
 
+        .weekdays {
+            display: flex;
             height: 25px;
             flex-direction: row;
             align-items: center;
-        }
 
-            .weekdays div {
+            div {
                 flex: 1;
                 padding-left: 13px;
-                color: #666;
+                color: @grey-color;
                 font-family: "Source Sans Pro", serif;
                 font-size: 16px;
                 font-weight: 600;
             }
+        }
 
         .net {
             display: flex;
-            flex-flow: row wrap; /*flex-flow: <'flex-direction'> || <'flex-wrap'>*/
+            flex-flow: row wrap; //flex-flow: <'flex-direction'> || <'flex-wrap'>
             border: 1px solid #d5d5d5;
-        }
 
             .day-wrapper {
                 border: 1px solid #d5d5d5;
                 flex-grow: 1;
                 flex-basis: 13.8%;
                 position: relative;
-            }
 
-                .day-wrapper::before {
+                &::before {
                     content: "";
                     padding-top: 100%;
                     float: left;
@@ -91,7 +78,6 @@ main {
                     display: flex;
                     flex-direction: column;
                     position: absolute;
-                }
 
                     .date {
                         color: #464547;
@@ -107,10 +93,15 @@ main {
                         height: 100%;
                         top: 0;
 
-                        border: 3px solid #39c2d7;
+                        border: 3px solid @blue-color;
                         border-radius: 3px;
                         margin: -3px;
                         z-index: 1;
                     }
+                }
+            }
+        }
+    }
+}
 
 
