@@ -61,6 +61,9 @@ module.exports = {
 		},  {
 			test: /\.(ttf|otf|eot|svg|woff(2)?)$/,
 			use: ['file-loader?name=/fonts/[name].[ext]']
+		}, {
+			test: /\.json$/,
+			use: ['file-loader?name=[path][name].[ext]']
 		}]
 	},
 

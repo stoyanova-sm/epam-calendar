@@ -1,0 +1,23 @@
+[{
+  "dateTime": 1493586000000,
+  "tasks": [{
+    "text": "Letter #01-01 «Whatever» from Organization 1 to EPAM",
+    "color": "green",
+    "duration": 3
+  }, {
+    "text": "Letter #01-01 «Whatever» from Organization 1 to EPAM",
+    "color": "red",
+    "duration": 4
+  }]
+}, {
+  "dateTime": 1494104400000,
+  "tasks": [{
+    "text": "Letter #01-01 «Whatever» from Organization 1 to EPAM",
+    "color": "yellow",
+    "duration": 3
+  }, {
+    "text": "Letter #01-01 «Whatever» from Organization 1 to EPAM",
+    "color": "yellow",
+    "duration": 5
+  }]
+}]
