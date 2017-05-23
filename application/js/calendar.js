@@ -92,6 +92,9 @@ export default class Calendar {
 			const calendarDate = this.calendarMap.find(calendarMapDay => calendarMapDay.dateTime === tasksByDate.dateTime);
 
 			calendarDate.tasks = tasksByDate.tasks;
+			if (calendarDate) {
+				calendarDate.tasks = tasksByDate.tasks;
+			}
 		}
 	};
 
