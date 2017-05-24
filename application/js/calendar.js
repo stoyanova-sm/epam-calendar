@@ -30,7 +30,7 @@ export default class Calendar {
 	draw() {
 		this.setHeader();
 		this.generateDates();
-		this.requestTasks();
+		this.renderTasks();
 	};
 
 	setHeader() {
@@ -48,7 +48,7 @@ export default class Calendar {
 		let firstWeekdayOfMonth;
 		const monthLength = new Date(firstDateToDisplay.getFullYear(), firstDateToDisplay.getMonth()+1, 0).getDate();
 
-		firstDateToDisplay.setHours(0,0,0,0);///TODO: think about this
+		firstDateToDisplay.setHours(0,0,0,0);// in json we get time in milliseconds for faster comparison
 		firstDateToDisplay.setDate(1); // If Monday is the first day of the Month
 		firstWeekdayOfMonth = firstDateToDisplay.getDay();
 
@@ -63,11 +63,13 @@ export default class Calendar {
 		for(let i = 0; i < 35; i++) {
 			const dateObj = new Date(firstDateToDisplay.getTime());
 			const date = dateObj.getDate();
-			const dateTime = dateObj.getTime();///TODO: think about this
+			const dateTime = dateObj.getTime();// in json we get time in milliseconds for faster comparison
+			const tasks = [];
 
-			this.calendarMap.push({dateObj, dateTime, date});
+			this.calendarMap.push({dateObj, dateTime, date, tasks});
 			firstDateToDisplay.setDate(date + 1);
 		}
+		console.log(this.calendarMap)
 	};
 
 	setLastMondayOfPreviousMonth(date) { //returns Date() with the date of last monday of previous month
@@ -76,7 +78,7 @@ export default class Calendar {
 		date.setDate(lastMondayOfPreviousMonth);
 	};
 
-	requestTasks() { ///TODO: add catch errors,  json()
+	renderTasks() { ///TODO: add catch errors,  json()
 		fetch('/build/data/tasksObject.json')
 			.then(response => {
 				if(response.status === 200) {
@@ -94,6 +96,7 @@ export default class Calendar {
 			const calendarDate = this.calendarMap.find(calendarMapDay => calendarMapDay.dateTime === tasksByDate.dateTime);
 			if (calendarDate) {
 				calendarDate.tasks = tasksByDate.tasks;
+				console.log(calendarDate);
 			}
 		}
 	};
@@ -103,6 +106,8 @@ export default class Calendar {
 		const calendar = document.querySelector('.net');
 
 		for(const element of this.calendarMap) {
+			this.calcTaskDurationForHtml(element);
+
 			const template = `
 				<div class="day-wrapper">
 					<div class="day">
@@ -117,15 +122,39 @@ export default class Calendar {
 		calendar.innerHTML = calendarHtml.join(''); //combine the array of templates into a string
 	};
 
-	getTasksHtml(element) {
-		const htmlOutput = [];
+	calcTaskDurationForHtml(element) {
+		if (element.tasks.length !== 0) {
+			let taskStartDay = element.dateObj.getDay();//the day of the week the task starts
+			if (taskStartDay === 0) taskStartDay = 7; //if sunday
 
-		if (!element.tasks) { //if no task do nothing
+			for (let i = element.tasks.length-1; i >= 0; i--) { // needed for proper task ordering (fist in first out)
+				const taskSize = element.tasks[i].duration + taskStartDay;// task start day + task duration
+				if (taskSize > 8) {
+					const restOfTaskDuration = taskSize - 8;//the rest of the task days, that we transfer to the next week
+					element.tasks[i].duration = element.tasks[i].duration - restOfTaskDuration; //task duration on current week
+
+					const restOfTaskObj = { // object with the rest part of the task
+						color: element.tasks[i].color,
+						duration: restOfTaskDuration,
+						text: element.tasks[i].text
+					};
+					const elementIndex = this.calendarMap.indexOf(element);
+					this.calendarMap[elementIndex + element.tasks[i].duration].tasks.unshift(restOfTaskObj)
+				}
+			}
+		}
+	}
+
+	getTasksHtml(element) {
+
+		const htmlOutput = [];
+		const tasksLength = element.tasks.length;
+		const task = element.tasks;
+
+		if (!tasksLength) { //if no task do nothing
 			return '';
 		}
 
-		const tasksLength = element.tasks.length;
-		const task = element.tasks;
 		for (let i = 0; i < tasksLength; i++) { //go through the tasks in array
 			if(i === 4 && tasksLength > 5) {
 				htmlOutput.push(
@@ -146,20 +175,8 @@ export default class Calendar {
 				</div>`
 			);
 		}
-		this.calcDurationHtml();
+
 		return htmlOutput.join('');
-	}
-
-	calcDurationHtml() {
-		console.log(this.calendarMap);
-		for(let i = 0; i < 35; i++) {
-			let a = this.calendarMap[1].dateObj.getDay();
-			console.log(a);
-			for (const tasks of this.calendarMap) {
-
-			}
-		}
-
 	}
 };
 
