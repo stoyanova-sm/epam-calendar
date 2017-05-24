@@ -2,18 +2,13 @@
 	flex: 1;
 	position: relative;
 
-	& > div:nth-child(2) {
-		top: 20%
+	.generate-task-position(@i: 2) when (@i <= 20) {
+		& > div:nth-child(@{i}) {
+			top: 20% * (@i - 1);
+		}
+		.generate-task-position(@i + 1);
 	}
-	& > div:nth-child(3) {
-		top: 40%
-	}
-	& > div:nth-child(4) {
-		top: 60%
-	}
-	& > div:nth-child(5) {
-		top: 80%
-	}
+	.generate-task-position();
 
 	.task {
 		height: 20%;
@@ -86,7 +81,6 @@
 		}
 		.generate-task-duration(@i + 1);
 	}
-
 	.generate-task-duration();
 
 	//.task-duration-1 {
