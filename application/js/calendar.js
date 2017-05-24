@@ -125,7 +125,8 @@ export default class Calendar {
 		}
 
 		const tasksLength = element.tasks.length;
-		for (let i = 0, task = element.tasks[i]; i < tasksLength; i++) { //go through the tasks in array
+		const task = element.tasks;
+		for (let i = 0; i < tasksLength; i++) { //go through the tasks in array
 			if(i === 4 && tasksLength > 5) {
 				htmlOutput.push(
 					`<div class="task task-duration-1 task-more">
@@ -137,10 +138,10 @@ export default class Calendar {
 			}
 
 			htmlOutput.push(
-				`<div class="task task-duration-${task.duration} task-color-${task.color}">
+				`<div class="task task-duration-${task[i].duration} task-color-${task[i].color}">
 					<div class="task-label"></div>
 					<div class="task-contents">
-						<a href="#">${task.text}</a>
+						<a href="#">${task[i].text}</a>
 					</div>
 				</div>`
 			);
