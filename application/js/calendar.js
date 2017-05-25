@@ -28,10 +28,16 @@ export default class Calendar {
 	};
 
 	draw() {
+		this.currentDay();
 		this.setHeader();
 		this.generateDates();
 		this.renderTasks();
 	};
+
+	currentDay() {
+
+
+	}
 
 	setHeader() {
 		const header = document.querySelector('.calendar-header');
@@ -69,7 +75,6 @@ export default class Calendar {
 			this.calendarMap.push({dateObj, dateTime, date, tasks});
 			firstDateToDisplay.setDate(date + 1);
 		}
-		console.log(this.calendarMap)
 	};
 
 	setLastMondayOfPreviousMonth(date) { //returns Date() with the date of last monday of previous month
@@ -96,7 +101,6 @@ export default class Calendar {
 			const calendarDate = this.calendarMap.find(calendarMapDay => calendarMapDay.dateTime === tasksByDate.dateTime);
 			if (calendarDate) {
 				calendarDate.tasks = tasksByDate.tasks;
-				console.log(calendarDate);
 			}
 		}
 	};
@@ -104,6 +108,10 @@ export default class Calendar {
 	render() {
 		const calendarHtml = [];
 		const calendar = document.querySelector('.net');
+
+		let today = new Date();
+		today.setHours(0, 0, 0, 0);
+		today = today.getTime();
 
 		for(const element of this.calendarMap) {
 			this.calcTaskDurationForHtml(element);
@@ -113,6 +121,7 @@ export default class Calendar {
 					<div class="day">
 						<div class="date">${element.date}</div>
 						<div class="tasks">${this.getTasksHtml(element)}</div>
+						${(today === element.dateTime)?'<div class="day-current-border"></div>':''}
 					</div>
 				</div>`;
 
@@ -136,7 +145,8 @@ export default class Calendar {
 					const restOfTaskObj = { // object with the rest part of the task
 						color: element.tasks[i].color,
 						duration: restOfTaskDuration,
-						text: element.tasks[i].text
+						text: element.tasks[i].text,
+						extended: true
 					};
 					const elementIndex = this.calendarMap.indexOf(element);
 					this.calendarMap[elementIndex + element.tasks[i].duration].tasks.unshift(restOfTaskObj)
@@ -167,7 +177,7 @@ export default class Calendar {
 			}
 
 			htmlOutput.push(
-				`<div class="task task-duration-${task[i].duration} task-color-${task[i].color}">
+				`<div class="task task-duration-${task[i].duration} ${(task[i].extended)? 'task-extended':''} task-color-${task[i].color}">
 					<div class="task-label"></div>
 					<div class="task-contents">
 						<a href="#">${task[i].text}</a>
