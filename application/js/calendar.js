@@ -68,7 +68,6 @@ export default class Calendar {
 
 			this.calendarMap.push({dateObj, dateTime, date, tasks}); //TODO:dateObj-?
 			firstDateToDisplay.setDate(date + 1);
-			console.log(this.calendarMap);
 		}
 	};
 
@@ -141,6 +140,8 @@ export default class Calendar {
 						color: element.tasks[i].color,
 						duration: restOfTaskDuration,
 						text: element.tasks[i].text,
+						startTime: element.tasks[i].startTime,
+						endTime: element.tasks[i].endTime,
 						extended: true
 					};
 					const elementIndex = this.calendarMap.indexOf(element);
@@ -155,7 +156,6 @@ export default class Calendar {
 		const htmlOutput = [];
 		const tasksLength = element.tasks.length;
 		const task = element.tasks;
-		const startDate = element.dateObj.toLocaleString('en-GB', {day: 'numeric', month: '2-digit', year: '2-digit'});
 
 		if (!tasksLength) { //if no task do nothing
 			return '';
@@ -171,18 +171,19 @@ export default class Calendar {
 					</div>`
 				);
 			}
-		// <a href="#" title="Letter #01-01 «Whatever» from Organization 1 to EPAM
-			// &#013;Created on: 7/08/15 12:00. Complete till: 12/08/15 14:00">Letter #01-01 «Whatever» from Organization 1 to EPAM</a>
-			// console.log(this.calendarMap);
-			const date = new Date(element.dateObj.getTime());
-			date.setDate(date.getDate() + task[i].duration);
-			let endDate = date.toLocaleString('en-GB', {day: 'numeric', month: '2-digit', year: '2-digit'});
+			//for title in <a>:
+			const start = new Date(task[i].startTime);
+			const startDate = start.toLocaleString('en-GB', {day: 'numeric', month: '2-digit', year: '2-digit'});
+			const startHour = start.toLocaleString('en-GB', {hour: '2-digit', minute: '2-digit'});
+			const end = new Date(task[i].endTime);
+			const endDate = end.toLocaleString('en-GB', {day: 'numeric', month: '2-digit', year: '2-digit'});
+			const endHour = end.toLocaleString('en-GB', {hour: '2-digit', minute: '2-digit'});
 
 			htmlOutput.push(
 				`<div class="task task-duration-${task[i].duration} ${(task[i].extended)? 'task-extended':''} task-color-${task[i].color}">
 					<div class="task-label"></div>
 					<div class="task-contents">
-						<a href="#" title="${task[i].text} &#013 Created on: ${startDate} ${task[i].startHour}. Complete till: ${endDate} ${task[i].endHour}">${task[i].text}</a>
+						<a href="#" title="${task[i].text} &#013 Created on: ${startDate} ${startHour}. Complete till: ${endDate} ${endHour}">${task[i].text}</a>
 					</div> 
 				</div>`
 			);
