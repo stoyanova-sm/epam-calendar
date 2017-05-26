@@ -28,16 +28,10 @@ export default class Calendar {
 	};
 
 	draw() {
-		this.currentDay();
 		this.setHeader();
 		this.generateDates();
 		this.renderTasks();
 	};
-
-	currentDay() {
-
-
-	}
 
 	setHeader() {
 		const header = document.querySelector('.calendar-header');
@@ -45,7 +39,7 @@ export default class Calendar {
 			year: 'numeric',
 			month: 'long'
 		}
-		const monthAndYear = this.displayDate.toLocaleString('en-EN', options);
+		const monthAndYear = this.displayDate.toLocaleString('en-GB', options);
 		header.innerText = monthAndYear;
 	};
 
@@ -72,8 +66,9 @@ export default class Calendar {
 			const dateTime = dateObj.getTime();// in json we get time in milliseconds for faster comparison
 			const tasks = [];
 
-			this.calendarMap.push({dateObj, dateTime, date, tasks});
+			this.calendarMap.push({dateObj, dateTime, date, tasks}); //TODO:dateObj-?
 			firstDateToDisplay.setDate(date + 1);
+			console.log(this.calendarMap);
 		}
 	};
 
@@ -109,7 +104,7 @@ export default class Calendar {
 		const calendarHtml = [];
 		const calendar = document.querySelector('.net');
 
-		let today = new Date();
+		let today = new Date(); //for blue border
 		today.setHours(0, 0, 0, 0);
 		today = today.getTime();
 
@@ -160,6 +155,7 @@ export default class Calendar {
 		const htmlOutput = [];
 		const tasksLength = element.tasks.length;
 		const task = element.tasks;
+		const startDate = element.dateObj.toLocaleString('en-GB', {day: 'numeric', month: '2-digit', year: '2-digit'});
 
 		if (!tasksLength) { //if no task do nothing
 			return '';
@@ -175,13 +171,19 @@ export default class Calendar {
 					</div>`
 				);
 			}
+		// <a href="#" title="Letter #01-01 «Whatever» from Organization 1 to EPAM
+			// &#013;Created on: 7/08/15 12:00. Complete till: 12/08/15 14:00">Letter #01-01 «Whatever» from Organization 1 to EPAM</a>
+			// console.log(this.calendarMap);
+			const date = new Date(element.dateObj.getTime());
+			date.setDate(date.getDate() + task[i].duration);
+			let endDate = date.toLocaleString('en-GB', {day: 'numeric', month: '2-digit', year: '2-digit'});
 
 			htmlOutput.push(
 				`<div class="task task-duration-${task[i].duration} ${(task[i].extended)? 'task-extended':''} task-color-${task[i].color}">
 					<div class="task-label"></div>
 					<div class="task-contents">
-						<a href="#">${task[i].text}</a>
-					</div>
+						<a href="#" title="${task[i].text} &#013 Created on: ${startDate} ${task[i].startHour}. Complete till: ${endDate} ${task[i].endHour}">${task[i].text}</a>
+					</div> 
 				</div>`
 			);
 		}
