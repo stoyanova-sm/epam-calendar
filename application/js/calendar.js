@@ -157,10 +157,10 @@ export default class Calendar {
 	}
 
 	checkMonth(element, nextElement, i){ // adds month to date with month change
-		if (element.dateObj.getDate() > nextElement.dateObj.getDate()) {
+		if (i < 34 && element.dateObj.getDate() > nextElement.dateObj.getDate()) {
 			if (i < 7) {
 				element.month = element.dateObj.toLocaleString('en-GB', {month: 'long'});
-			} else if (i > 27 && i < 34) {
+			} else if (i > 27) {
 				nextElement.month = nextElement.dateObj.toLocaleString('en-GB', {month: 'short'});
 			}
 		}
