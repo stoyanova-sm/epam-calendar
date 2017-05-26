@@ -60,6 +60,8 @@ export default class Calendar {
 			this.setLastMondayOfPreviousMonth(firstDateToDisplay);
 		}
 
+		this.calendarMap = [];
+
 		for(let i = 0; i < 35; i++) {
 			const dateObj = new Date(firstDateToDisplay.getTime());
 			const date = dateObj.getDate();
