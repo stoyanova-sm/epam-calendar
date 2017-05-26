@@ -109,13 +109,16 @@ export default class Calendar {
 		today.setHours(0, 0, 0, 0);
 		today = today.getTime();
 
-		for(const element of this.calendarMap) {
+		for(let i = 0; i < 35; i++) {
+			const element = this.calendarMap[i];
+			const nextElement = this.calendarMap[i+1]
 			this.calcTaskDurationForHtml(element);
+			this.checkMonth(element, nextElement, i);
 
 			const template = `
 				<div class="day-wrapper">
 					<div class="day">
-						<div class="date">${element.date}</div>
+						<div class="date">${element.date} ${(element.month) ? element.month :''}</div>
 						<div class="tasks">${this.getTasksHtml(element)}</div>
 						${(today === element.dateTime)?'<div class="day-current-border"></div>':''}
 					</div>
@@ -152,6 +155,17 @@ export default class Calendar {
 			}
 		}
 	}
+
+	checkMonth(element, nextElement, i){ // adds month to date with month change
+		if (element.dateObj.getDate() > nextElement.dateObj.getDate()) {
+			if (i < 7) {
+				element.month = element.dateObj.toLocaleString('en-GB', {month: 'long'});
+			} else if (i > 27 && i < 34) {
+				nextElement.month = nextElement.dateObj.toLocaleString('en-GB', {month: 'short'});
+			}
+		}
+	}
+
 
 	getTasksHtml(element) {
 
