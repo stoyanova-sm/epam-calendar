@@ -66,15 +66,13 @@
 		}
 	}
 
-	.show, .hide {
+	.show {
 		font-size: 20px;
 		color: @white-color;
 		width: 30px;
 		text-align: center;
 		display: none;
 	}
-
-
 }
 
 @media (max-width: 992px) {
@@ -99,10 +97,6 @@
 			display: block;
 		}
 
-		.hide {
-			margin-left: 165px;
-		}
-
 		&.extended {
 			width: 200px;
 			min-width: 200px;
@@ -116,6 +110,11 @@
 					color: @white-color;
 					font-size: 14px;
 				}
+			}
+
+			.show {
+				transform: rotate(180deg);
+				margin-left: 165px;
 			}
 		}
 	}
