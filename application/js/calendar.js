@@ -4,18 +4,18 @@ export default class Calendar {
 	constructor() {
 		this.displayDate = new Date();
 		this.calendarMap = [];
-	};
+	}
 
 	initialize() { //draw the calendar and add events to switch months
 		this.setEvents();
-		this.draw();
-	};
+		return this.draw();
+	}
 
 	setEvents() { //add events to switch months by clicking arrow buttons
 		///TODO: change <a> to <button>
 		document.querySelector('.back').addEventListener('click', () => this.switchMonth(true));
 		document.querySelector('.forward').addEventListener('click', () => this.switchMonth(false));
-	};
+	}
 
 	switchMonth(direction) {
 		if(direction) {
@@ -25,23 +25,23 @@ export default class Calendar {
 		}
 
 		this.draw();
-	};
+	}
 
 	draw() {
 		this.setHeader();
 		this.generateDates();
 		this.renderTasks();
-	};
+	}
 
 	setHeader() {
 		const header = document.querySelector('.calendar-header');
 		const options = {
 			year: 'numeric',
 			month: 'long'
-		}
+		};
 		const monthAndYear = this.displayDate.toLocaleString('en-GB', options);
 		header.innerText = monthAndYear;
-	};
+	}
 
 	generateDates() {
 		const firstDateToDisplay = new Date(this.displayDate.getTime());
@@ -71,24 +71,25 @@ export default class Calendar {
 			this.calendarMap.push({dateObj, dateTime, date, tasks}); //TODO:dateObj-?
 			firstDateToDisplay.setDate(date + 1);
 		}
-	};
+	}
 
 	setLastMondayOfPreviousMonth(date) { //returns Date() with the date of last monday of previous month
 		date.setDate(0); // last day of previous month
 		const lastMondayOfPreviousMonth = date.getDate() - (date.getDay() - 1);
 		date.setDate(lastMondayOfPreviousMonth);
-	};
+	}
 
 	renderTasks() { ///TODO: add catch errors,  json()
-		fetch('/build/data/tasksObject.json')
+		return fetch('/build/data/tasksObject.json')
 			.then(response => {
 				if(response.status === 200) {
 					return response.json();
 				}
 			})
 			.then(tasksList => this.updateCalendarMap(tasksList))
-			.then(() => this.render());
-	};
+			.then(() => this.render())
+			.then(() => this.showMoreTasks())
+	}
 
 	updateCalendarMap(tasksByDates) {
 		for(const tasksByDate of tasksByDates) {
@@ -99,7 +100,7 @@ export default class Calendar {
 				calendarDate.tasks = tasksByDate.tasks;
 			}
 		}
-	};
+	}
 
 	render() {
 		const calendarHtml = [];
@@ -111,7 +112,7 @@ export default class Calendar {
 
 		for(let i = 0; i < 35; i++) {
 			const element = this.calendarMap[i];
-			const nextElement = this.calendarMap[i+1]
+			const nextElement = this.calendarMap[i+1];
 			this.calcTaskDurationForHtml(element);
 			this.checkMonth(element, nextElement, i);
 
@@ -128,7 +129,7 @@ export default class Calendar {
 		}
 
 		calendar.innerHTML = calendarHtml.join(''); //combine the array of templates into a string
-	};
+	}
 
 	calcTaskDurationForHtml(element) {
 		if (element.tasks.length !== 0) {
@@ -168,7 +169,6 @@ export default class Calendar {
 
 
 	getTasksHtml(element) {
-
 		const htmlOutput = [];
 		const tasksLength = element.tasks.length;
 		const task = element.tasks;
@@ -178,34 +178,64 @@ export default class Calendar {
 		}
 
 		for (let i = 0; i < tasksLength; i++) { //go through the tasks in array
-			if(i === 4 && tasksLength > 5) {
+			if(tasksLength > 5 && i >= 4) {
+				if(i === 4) {
+					htmlOutput.push(
+						`<div class="task task-more">
+							<div class="task-contents">
+								<a href="#">${tasksLength - 4} more items</a> 
+							</div>
+						</div>`
+					);
+
+					htmlOutput.push('<div class="task-more-container">');
+				}
+
+				htmlOutput.push(`<a href="#" title="${this.generateTaskTitle(task[i])}">${task[i].text}</a>`);
+
+				if(i === tasksLength-1) {
+					htmlOutput.push('</div>');
+				}
+			} else {
 				htmlOutput.push(
-					`<div class="task task-duration-1 task-more">
+					`<div class="task task-duration-${task[i].duration} ${(task[i].extended)? 'task-extended':''} task-color-${task[i].color}">
+						<div class="task-label"></div>
 						<div class="task-contents">
-							<a href="#">${tasksLength - 4} more items</a> 
-						</div>
+							<a href="#" title="${this.generateTaskTitle(task[i])}">${task[i].text}</a>
+						</div> 
 					</div>`
 				);
 			}
-			//for title in <a>:
-			const start = new Date(task[i].startTime);
-			const startDate = start.toLocaleString('en-GB', {day: 'numeric', month: '2-digit', year: '2-digit'});
-			const startHour = start.toLocaleString('en-GB', {hour: '2-digit', minute: '2-digit'});
-			const end = new Date(task[i].endTime);
-			const endDate = end.toLocaleString('en-GB', {day: 'numeric', month: '2-digit', year: '2-digit'});
-			const endHour = end.toLocaleString('en-GB', {hour: '2-digit', minute: '2-digit'});
 
-			htmlOutput.push(
-				`<div class="task task-duration-${task[i].duration} ${(task[i].extended)? 'task-extended':''} task-color-${task[i].color}">
-					<div class="task-label"></div>
-					<div class="task-contents">
-						<a href="#" title="${task[i].text} &#013 Created on: ${startDate} ${startHour}. Complete till: ${endDate} ${endHour}">${task[i].text}</a>
-					</div> 
-				</div>`
-			);
+			if(i === tasksLength-1 && tasksLength > 5) {
+				htmlOutput.push('</div>');
+			}
 		}
 
 		return htmlOutput.join('');
 	}
-};
+
+	generateTaskTitle (task) {
+		//for title in <a>:
+		const start = new Date(task.startTime);
+		const startDate = start.toLocaleString('en-GB', {day: 'numeric', month: '2-digit', year: '2-digit'});
+		const startHour = start.toLocaleString('en-GB', {hour: '2-digit', minute: '2-digit'});
+		const end = new Date(task.endTime);
+		const endDate = end.toLocaleString('en-GB', {day: 'numeric', month: '2-digit', year: '2-digit'});
+		const endHour = end.toLocaleString('en-GB', {hour: '2-digit', minute: '2-digit'});
+
+		return `${task.text} &#013 Created on: ${startDate} ${startHour}. Complete till: ${endDate} ${endHour}`;
+	}
+
+	showMoreTasks() {
+		const more = document.querySelectorAll('.task-more');
+
+		for (const element of more) {
+			element.addEventListener('click', () => {
+				const taskContainer = element.parentElement.querySelector('.task-more + .task-more-container');
+				taskContainer.classList.toggle('show-more');
+			})
+		}
+	}
+}
 

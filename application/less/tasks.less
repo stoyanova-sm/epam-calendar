@@ -2,7 +2,7 @@
 	flex: 1;
 	position: relative;
 
-	.generate-task-position(@i: 2) when (@i <= 20) {
+	.generate-task-position(@i: 2) when (@i <= 6) {
 		& > div:nth-child(@{i}) {
 			top: 20% * (@i - 1);
 		}
@@ -46,34 +46,55 @@
 				height: 100%;
 			}
 		}
-	}
 
-	.task.task-more {
+		&.task-more {
 
-		.task-contents {
-			margin: -1px;
-		}
+			.task-contents {
+				margin: -1px;
+			}
 
-		a {
-			color: #666;
-			font-family: "Source Sans Pro", serif;
-			font-size: 12px;
-			font-weight: 300;
+			a {
+				color: #666;
+				font-family: "Source Sans Pro", serif;
+				font-size: 12px;
+				font-weight: 300;
 
-			&::before {
-				content: "\f0d7";
-				font-family: FontAwesome;
-				margin-left: -2px;
-				padding-right: 4px;
+				&::before {
+					content: "\f0d7";
+					font-family: FontAwesome;
+					margin-left: -2px;
+					padding-right: 4px;
+				}
+			}
+
+			&:hover {
+				text-decoration: none;
 			}
 		}
 
-		&:hover {
-			text-decoration: none;
-		}
-
-		~.task{
+		&-more-container {
+			background: #8899AA;
+			position: absolute;
+			width: 300%;
+			z-index: 3;
 			display: none;
+			font-family: "Source Sans Pro", serif;
+			font-size: 14px;
+			font-weight: 600;
+			padding: 3px;
+
+			a {
+				color: white;
+				display: inline-block;
+
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+
+			&.show-more {
+				display: block;
+			}
 		}
 	}
 
