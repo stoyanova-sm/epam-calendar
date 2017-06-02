@@ -12,7 +12,6 @@ export default class Calendar {
 	}
 
 	setEvents() { //add events to switch months by clicking arrow buttons
-		///TODO: change <a> to <button>
 		document.querySelector('.back').addEventListener('click', () => this.switchMonth(true));
 		document.querySelector('.forward').addEventListener('click', () => this.switchMonth(false));
 	}
@@ -68,7 +67,7 @@ export default class Calendar {
 			const dateTime = dateObj.getTime();// in json we get time in milliseconds for faster comparison
 			const tasks = [];
 
-			this.calendarMap.push({dateObj, dateTime, date, tasks}); //TODO:dateObj-?
+			this.calendarMap.push({dateObj, dateTime, date, tasks});
 			firstDateToDisplay.setDate(date + 1);
 		}
 	}
@@ -89,6 +88,7 @@ export default class Calendar {
 			.then(tasksList => this.updateCalendarMap(tasksList))
 			.then(() => this.render())
 			.then(() => this.showMoreTasks())
+			.catch((error) => console.log(error))
 	}
 
 	updateCalendarMap(tasksByDates) {
