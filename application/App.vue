@@ -14,7 +14,7 @@
 			</nav>
 
 			<!--:products="theProducts"-->
-			<router-view title="Shop our award-winning product line"></router-view>
+			<router-view :key="$route.path"></router-view>
 
 			<section class="control">
 				<h1>On control</h1>
@@ -55,7 +55,7 @@ export default {
 	name: 'app',
 	data() {
 		return {
-			theProducts: []
+			tasksObject: []
 		};
 	},
 	created: function() {
@@ -65,9 +65,14 @@ export default {
 					return response.json();
 				}
 			})
-			.then(tasksList => this.updateCalendarMap(tasksList))
-		fetch('https://hplussport.com/api/products')
-//					.done(data => {this.theProducts = data;});
+			.then(tasksList => this.tasksObject = tasksList)
+			.catch(error => this.showError(error));
+	},
+	methods: {
+		showError(error) {
+			/// TODO: properly handle the error
+			console.error(error);
+		}
 	}
 }
 </script>

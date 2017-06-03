@@ -16,7 +16,7 @@ const year = new Date().getFullYear();
 
 const router = new VueRouter({
 	routes: [{
-		path: '/',
+		path: '/(calendar)?',
 		redirect: `/calendar/${year}/${month}`
 	}, {
 		path: '/calendar/:year/:month',

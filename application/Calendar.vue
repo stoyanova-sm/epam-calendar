@@ -1,9 +1,10 @@
 <template>
 	<main>
 		<header>
-			<a class="fa fa-arrow-circle-left back" href="#"></a>
-			<a class="fa fa-arrow-circle-right forward" href="#"></a>
-			<h1 class="calendar-header">August 2015</h1>
+			<router-link class="fa fa-arrow-circle-left back" :to="`/calendar/${switchMonth(false)}`"></router-link>
+			<router-link class="fa fa-arrow-circle-right forward" :to="`/calendar/${switchMonth(true)}`"></router-link>
+
+			<h1 class="calendar-header">{{header}}</h1>
 		</header>
 
 		<section class="main-calendar">
@@ -315,15 +316,38 @@
 	//import ProductListItem from './ProductListItem.vue';
 
 	export default {
-		name: 'calendar'/*,
-		props: ['products', 'title'],
-		components: {
-			'product-list-item': ProductListItem
+		name: 'calendar',
+		props: [],
+		data() {
+			return {
+				displayDate: new Date(this.$route.params.year, this.$route.params.month-1)
+			}
+		},
+		created: function() {
+			//console.log(this.$route.params.month);
+		},
+		computed: {
+			header() {
+				const monthYear = this.displayDate.toLocaleString('en-GB', {year: 'numeric', month: 'long'});
+				return monthYear;
+			}
 		},
 		methods: {
-			remove(i) {
-				this.products.splice(i, 1);
+			switchMonth(direction) {
+				const newDisplayDate = new Date(this.displayDate.getTime());
+
+				if(direction) {
+					newDisplayDate.setMonth(newDisplayDate.getMonth() + 1);
+				} else {
+					newDisplayDate.setMonth(newDisplayDate.getMonth() - 1);
+				}
+
+				return `${newDisplayDate.getFullYear()}/${newDisplayDate.getMonth() + 1}`;
 			}
-		}*/
+		}
+		/*
+		 components: {
+		 'product-list-item': ProductListItem
+		 }*/
 	};
 </script>
