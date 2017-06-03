@@ -2,26 +2,20 @@
 	<div class="day-wrapper">
 		<div class="day">
 			<div class="date">{{dayData.date}} {{dayData.month}}</div>
-			<div class="tasks">
-				<!--
-				<div class="task task-duration-3 task-color-green">
-					<div class="task-label"></div>
-					<div class="task-contents">
-						<a href="#">Letter #01-01 «Whatever» from Organization 1 to EPAM</a>
-					</div>
-				</div>
-				-->
-			</div>
+			<day-tasks v-if="dayData.tasks.length > 0" :tasks="dayData.tasks"></day-tasks>
 		</div>
 	</div>
 </template>
 
 <script>
+	import DayTasks from './DayTasks.vue';
+
 	export default {
 		name: 'calendar-day',
 		props: ['dayData', 'dayIndex'],
 		created() {
 			this.addMonth();
+			console.log(this.dayData);
 		},
 		methods: {
 			addMonth() {
@@ -36,8 +30,10 @@
 					element.month = element.dateObj.toLocaleString('en-GB', {month: 'short'});
 				}
 			}
+		},
+		components: {
+			'day-tasks': DayTasks
 		}
 	}
-
 </script>
 

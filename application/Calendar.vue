@@ -19,7 +19,7 @@
 			</section>
 
 			<section class="net">
-				<calendar-day v-for="(day, index) in this.calendarMap" :dayData="day" :dayIndex="index" :key="day.dateTime"></calendar-day>
+				<calendar-day v-for="(day, index) in calendarMap" :dayData="day" :dayIndex="index" :key="day.dateTime"></calendar-day>
 			</section>
 			<!--
 			<section class="net">
@@ -338,6 +338,8 @@
 				})
 				.then(tasksList => this.tasksObject = tasksList)
 				.then(() => this.generateDates())
+				.then(() => this.updateCalendarMap())
+				.then(() => this.calcTaskDurationForHtml())
 				.catch(error => console.log(error));
 		},
 		computed: {
@@ -384,11 +386,49 @@
 					firstDateToDisplay.setDate(date + 1);
 				}
 			},
+			updateCalendarMap() {
+				for(const tasksByDate of this.tasksObject) {
+					// check if time in each day in calendar equals to time
+					//in every object, we received from server and returns this object from calendarMap
+					const calendarDate = this.calendarMap.find(calendarMapDay => calendarMapDay.dateTime === tasksByDate.dateTime);
+					if (calendarDate) {
+						calendarDate.tasks = tasksByDate.tasks;
+					}
+				}
+			},
 			setLastMondayOfPreviousMonth(date) { //returns Date() with the date of last monday of previous month
 				date.setDate(0); // last day of previous month
 				const lastMondayOfPreviousMonth = date.getDate() - (date.getDay() - 1);
 				date.setDate(lastMondayOfPreviousMonth);
+			},
+			calcTaskDurationForHtml() {
+				for (const element of this.calendarMap) {
+					if (element.tasks.length !== 0) {
+						let taskStartDay = element.dateObj.getDay();//the day of the week the task starts
+						if (taskStartDay === 0) taskStartDay = 7; //if sunday
+
+						for (let i = element.tasks.length - 1; i >= 0; i--) { // needed for proper task ordering (fist in first out)
+							const taskSize = element.tasks[i].duration + taskStartDay;// task start day + task duration
+							if (taskSize > 8) {
+								const restOfTaskDuration = taskSize - 8;//the rest of the task days, that we transfer to the next week
+								element.tasks[i].duration = element.tasks[i].duration - restOfTaskDuration; //task duration on current week
+
+								const restOfTaskObj = { // object with the rest part of the task
+									color: element.tasks[i].color,
+									duration: restOfTaskDuration,
+									text: element.tasks[i].text,
+									startTime: element.tasks[i].startTime,
+									endTime: element.tasks[i].endTime,
+									extended: true
+								};
+								const elementIndex = this.calendarMap.indexOf(element);
+								this.calendarMap[elementIndex + element.tasks[i].duration].tasks.unshift(restOfTaskObj)
+							}
+						}
+					}
+				}
 			}
+
 		},
 		components: {
 			'calendar-day': CalendarDay
