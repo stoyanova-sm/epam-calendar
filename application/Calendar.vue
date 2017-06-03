@@ -19,7 +19,7 @@
 			</section>
 
 			<section class="net">
-				<calendar-day v-for="day in this.calendarMap" :key="day.dateTime" :dayData="day"></calendar-day>
+				<calendar-day v-for="(day, index) in this.calendarMap" :dayData="day" :dayIndex="index" :key="day.dateTime"></calendar-day>
 			</section>
 			<!--
 			<section class="net">
@@ -381,18 +381,6 @@
 
 					this.calendarMap.push({dateObj, dateTime, date, tasks});
 
-					if (i > 1) {
-						const element = this.calendarMap[i - 1];
-						const nextElement = this.calendarMap[i];
-
-						if (i < 34 && element.dateObj.getDate() > nextElement.dateObj.getDate()) {
-							if (i < 7) {
-								element.month = element.dateObj.toLocaleString('en-GB', {month: 'short'});
-							} else if (i > 27) {
-								nextElement.month = nextElement.dateObj.toLocaleString('en-GB', {month: 'short'});
-							}
-						}
-					}
 					firstDateToDisplay.setDate(date + 1);
 				}
 			},
