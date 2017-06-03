@@ -13,7 +13,6 @@
 				<a class="fa fa-angle-double-right show" href="#"></a>
 			</nav>
 
-			<!--:products="theProducts"-->
 			<router-view :key="$route.path"></router-view>
 
 			<section class="control">
@@ -52,27 +51,6 @@
 
 <script>
 export default {
-	name: 'app',
-	data() {
-		return {
-			tasksObject: []
-		};
-	},
-	created: function() {
-		fetch('/build/data/tasksObject.json')
-			.then(response => {
-				if(response.status === 200) {
-					return response.json();
-				}
-			})
-			.then(tasksList => this.tasksObject = tasksList)
-			.catch(error => this.showError(error));
-	},
-	methods: {
-		showError(error) {
-			/// TODO: properly handle the error
-			console.error(error);
-		}
-	}
+	name: 'app'
 }
 </script>

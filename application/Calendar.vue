@@ -17,6 +17,11 @@
 				<div>Saturday</div>
 				<div>Sunday</div>
 			</section>
+
+			<section class="net">
+				<calendar-day v-for="day in this.calendarMap" :key="day.dateTime" :dayData="day"></calendar-day>
+			</section>
+			<!--
 			<section class="net">
 				<div class="day-wrapper">
 					<div class="day">
@@ -135,11 +140,11 @@
 									<a href="#">Letter #01-01 «Whatever» from Organization 1 to EPAM</a>
 								</div>
 							</div>
-							<!--<div class="task task-duration-1 task-more">-->
-							<!--<div class="task-contents">-->
-							<!--<a href="#">2 more items</a>-->
-							<!--</div>-->
-							<!--</div>-->
+							<div class="task task-duration-1 task-more">
+							<div class="task-contents">
+							<a href="#">2 more items</a>
+							</div>
+							</div>
 						</div>
 						<div class="day-current-border"></div>
 					</div>
@@ -307,24 +312,33 @@
 					</div>
 				</div>
 			</section>
-
+			-->
 		</section>
 	</main>
 </template>
 
 <script>
-	//import ProductListItem from './ProductListItem.vue';
+	import CalendarDay from './CalendarDay.vue';
 
 	export default {
 		name: 'calendar',
-		props: [],
 		data() {
 			return {
-				displayDate: new Date(this.$route.params.year, this.$route.params.month-1)
+				displayDate: new Date(this.$route.params.year, this.$route.params.month-1),
+				tasksObject: [],
+				calendarMap: []
 			}
 		},
-		created: function() {
-			//console.log(this.$route.params.month);
+		created () {
+			fetch('/build/data/tasksObject.json')
+				.then(response => {
+					if(response.status === 200) {
+						return response.json();
+					}
+				})
+				.then(tasksList => this.tasksObject = tasksList)
+				.then(() => this.generateDates())
+				.catch(error => console.log(error));
 		},
 		computed: {
 			header() {
@@ -343,11 +357,53 @@
 				}
 
 				return `${newDisplayDate.getFullYear()}/${newDisplayDate.getMonth() + 1}`;
+			},
+			generateDates() {
+				const firstDateToDisplay = new Date(this.displayDate.getTime());
+				const monthLength = new Date(firstDateToDisplay.getFullYear(), firstDateToDisplay.getMonth()+1, 0).getDate();
+				const firstWeekdayOfMonth = firstDateToDisplay.getDay();
+
+				if (firstWeekdayOfMonth  === 6 && monthLength === 31) { // If Saturday is the first date
+					firstDateToDisplay.setDate(3);
+				} else if (firstWeekdayOfMonth  === 0 && monthLength >= 30) { // If Sunday is the first date
+					firstDateToDisplay.setDate(2);
+				} else if (firstWeekdayOfMonth !== 1) { // If not Monday
+					this.setLastMondayOfPreviousMonth(firstDateToDisplay);
+				}
+
+				this.calendarMap = [];
+
+				for(let i = 0; i < 35; i++) {
+					const dateObj = new Date(firstDateToDisplay.getTime());
+					const date = dateObj.getDate();
+					const dateTime = dateObj.getTime();// in json we get time in milliseconds for faster comparison
+					const tasks = [];
+
+					this.calendarMap.push({dateObj, dateTime, date, tasks});
+
+					if (i > 1) {
+						const element = this.calendarMap[i - 1];
+						const nextElement = this.calendarMap[i];
+
+						if (i < 34 && element.dateObj.getDate() > nextElement.dateObj.getDate()) {
+							if (i < 7) {
+								element.month = element.dateObj.toLocaleString('en-GB', {month: 'short'});
+							} else if (i > 27) {
+								nextElement.month = nextElement.dateObj.toLocaleString('en-GB', {month: 'short'});
+							}
+						}
+					}
+					firstDateToDisplay.setDate(date + 1);
+				}
+			},
+			setLastMondayOfPreviousMonth(date) { //returns Date() with the date of last monday of previous month
+				date.setDate(0); // last day of previous month
+				const lastMondayOfPreviousMonth = date.getDate() - (date.getDay() - 1);
+				date.setDate(lastMondayOfPreviousMonth);
 			}
+		},
+		components: {
+			'calendar-day': CalendarDay
 		}
-		/*
-		 components: {
-		 'product-list-item': ProductListItem
-		 }*/
-	};
+	}
 </script>
