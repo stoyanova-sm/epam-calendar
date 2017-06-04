@@ -1,5 +1,5 @@
 <template>
-	<nav :class="{'extended': showNav}" class="nav">
+	<nav :class="{'nav-extended': showNav}" class="nav">
 		<ul>
 			<li><a class="home" href="#">Home</a></li>
 			<li><a class="docs" href="#">Documents</a></li>
