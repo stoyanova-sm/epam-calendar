@@ -1,10 +1,20 @@
 <template>
 	<div class="tasks">
-		<div v-for="task in tasks" :class="`task task-duration-${task.duration} ${(task.extended)? 'task-extended':''} task-color-${task.color}`">
+		<div v-if="(tasks.length > 5 && index < 4) || tasks.length <= 5" v-for="(task, index) in tasks" :class="`task task-duration-${task.duration} ${(task.extended)? 'task-extended':''} task-color-${task.color}`">
 			<div class="task-label"></div>
 			<div class="task-contents">
 				<a href="#" v-bind:title="generateTaskTitle(task)">{{task.text}}</a>
 			</div>
+		</div>
+
+		<div v-if="tasks.length > 5" class="task task-more">
+			<div class="task-contents">
+				<a href="#">{{tasks.length - 4}} more items</a>
+			</div>
+		</div>
+
+		<div v-if="tasks.length > 5" class="task-more-container">
+			<a href="#" v-for="(task, index) in tasks" v-if="index > 3" v-bind:title="generateTaskTitle(task)">{{task.text}}</a>
 		</div>
 	</div>
 </template>
@@ -27,6 +37,5 @@
 			}
 		}
 	}
-
 </script>
 
