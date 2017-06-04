@@ -6,7 +6,7 @@
 
 	.sharepoint {
 		display: flex;
-		flex-grow: 1;
+		flex: 1;
 		height: 100%;
 		align-items: center;
 
@@ -27,7 +27,6 @@
 	}
 
 	.links {
-		//float: right;
 		margin-right: 32px;
 
 		li {
@@ -45,13 +44,11 @@
 	}
 
 	.user {
-		//float: right;
 		font-family: "Source Sans Pro", serif;
 		font-size: 14px;
 		font-weight: 400;
 		color: @dark-grey-color;
 		line-height: 28px;
-		//position: relative;
 		background-color: @light-grey-color;
 		padding-left: 22px;
 
@@ -63,7 +60,6 @@
 	}
 
 	.icons {
-		//float: right;
 		padding: 0 9px 0 14px;
 		background-color: @light-grey-color;
 
@@ -78,7 +74,6 @@
 
 .middle-header {
 	display: flex;
-	//width: 100%; /*for ie*/
 	height: 32px;
 	background-color: @light-grey-color;
 	justify-content: space-between;
@@ -92,7 +87,7 @@
 
 	&-nav {
 		display: flex;
-		flex-grow: 1;
+		flex: 1;
 		margin-left: 20px;
 
 		a {

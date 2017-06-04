@@ -26,12 +26,10 @@ body {
 
     .main-content {
         display: flex;
-        flex-grow: 1; /*for ie*/
+        flex: 1;
         flex-direction: row;
 
-        &.extended-left {
-            padding-left: 30px;
-        }
+
     }
 
     a {
@@ -40,5 +38,17 @@ body {
 
     li {
         list-style-type: none;
+    }
+}
+
+@media (max-width: 1200px) {
+    .main-content {
+        &.extended-left {
+            padding-left: 30px;
+        }
+
+        &.extended-right {
+            padding-right: 30px;
+        }
     }
 }
