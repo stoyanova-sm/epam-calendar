@@ -1,18 +1,7 @@
 <template>
 	<div>
-		<div class="main-content">
-			<nav class="nav">
-				<ul>
-					<li><a class="home" href="#">Home</a></li>
-					<li><a class="docs" href="#">Documents</a></li>
-					<li><a class="calendar" href="#">Calendar</a></li>
-					<li><a class="archive" href="#">Archive</a></li>
-					<li><a class="nom" href="#">Nomenclature</a></li>
-					<li><a class="org" href="#">Organizations</a></li>
-				</ul>
-				<a class="fa fa-angle-double-right show" href="#"></a>
-			</nav>
-
+		<div class="main-content" :class="{'extended-left': extendedLeft, 'extended-right': extendedRight}">
+			<nav-menu></nav-menu>
 			<router-view :key="$route.path"></router-view>
 
 			<section class="control">
@@ -50,7 +39,27 @@
 </template>
 
 <script>
-export default {
-	name: 'app'
-}
+	import Nav from './Nav.vue';
+
+	export default {
+		name: 'app',
+		data() {
+			return {
+				extendedRight: false,
+				extendedLeft: false
+			}
+		},
+		created() {
+			this.$root.$on('expandNav', () => {
+				this.extendedLeft = !this.extendedLeft;
+			});
+			this.$root.$on('expandControl', () => {
+				this.extendedRight = !this.extendedRight;
+			});
+		},
+		components: {
+			'nav-menu': Nav
+		}
+	}
+
 </script>
