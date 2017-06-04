@@ -6,10 +6,9 @@
 				<a href="#" v-bind:title="generateTaskTitle(task)">{{task.text}}</a>
 			</div>
 		</div>
-
 		<div v-if="tasks.length > 5" v-on:click="showMoreTasks = !showMoreTasks" class="task task-more">
 			<div class="task-contents">
-				<a href="#" onclick="return false" class="task-contents">{{tasks.length - 4}} more items</a>
+				<a href="#" v-bind:class="{'rotate':showMoreTasks}" onclick="return false" class="task-contents">{{tasks.length - 4}} more items</a>
 			</div>
 		</div>
 
