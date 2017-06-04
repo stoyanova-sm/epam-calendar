@@ -333,7 +333,6 @@
 			fetch('/build/data/tasksObject.json')
 				.then(response => {
 					if(response.status === 200) {
-						console.log(11111);
 						return response.json();
 					}
 				})
