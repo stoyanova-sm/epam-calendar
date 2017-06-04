@@ -3,6 +3,7 @@
 		<div class="day">
 			<div class="date">{{dayData.date}} {{dayData.month}}</div>
 			<day-tasks v-if="dayData.tasks.length > 0" :tasks="dayData.tasks"></day-tasks>
+			<div v-if="today === dayData.dateTime" class="day-current-border"></div>
 		</div>
 	</div>
 </template>
@@ -12,7 +13,7 @@
 
 	export default {
 		name: 'calendar-day',
-		props: ['dayData', 'dayIndex'],
+		props: ['dayData', 'dayIndex', 'today'],
 		created() {
 			this.addMonth();
 			console.log(this.dayData);
@@ -29,7 +30,7 @@
 				} else if (this.dayIndex > 27 && firstDayInMonth.getTime() === element.dateTime) {
 					element.month = element.dateObj.toLocaleString('en-GB', {month: 'short'});
 				}
-			}
+			},
 		},
 		components: {
 			'day-tasks': DayTasks

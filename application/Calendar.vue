@@ -19,7 +19,7 @@
 			</section>
 
 			<section class="net">
-				<calendar-day v-for="(day, index) in calendarMap" :dayData="day" :dayIndex="index" :key="day.dateTime"></calendar-day>
+				<calendar-day v-for="(day, index) in calendarMap" :dayData="day" :dayIndex="index" :today="getToday" :key="day.dateTime"></calendar-day>
 			</section>
 			<!--
 			<section class="net">
@@ -333,6 +333,7 @@
 			fetch('/build/data/tasksObject.json')
 				.then(response => {
 					if(response.status === 200) {
+						console.log(11111);
 						return response.json();
 					}
 				})
@@ -346,6 +347,12 @@
 			header() {
 				const monthYear = this.displayDate.toLocaleString('en-GB', {year: 'numeric', month: 'long'});
 				return monthYear;
+			},
+			getToday() {
+				let today = new Date(); //for blue border
+				today.setHours(0, 0, 0, 0);
+				today = today.getTime();
+				return today
 			}
 		},
 		methods: {
@@ -375,7 +382,7 @@
 
 				this.calendarMap = [];
 
-				for(let i = 0; i < 35; i++) {
+				for (let i = 0; i < 35; i++) { //there are 35 cells in calendar table
 					const dateObj = new Date(firstDateToDisplay.getTime());
 					const date = dateObj.getDate();
 					const dateTime = dateObj.getTime();// in json we get time in milliseconds for faster comparison
@@ -387,7 +394,7 @@
 				}
 			},
 			updateCalendarMap() {
-				for(const tasksByDate of this.tasksObject) {
+				for (const tasksByDate of this.tasksObject) {
 					// check if time in each day in calendar equals to time
 					//in every object, we received from server and returns this object from calendarMap
 					const calendarDate = this.calendarMap.find(calendarMapDay => calendarMapDay.dateTime === tasksByDate.dateTime);
@@ -428,7 +435,6 @@
 					}
 				}
 			}
-
 		},
 		components: {
 			'calendar-day': CalendarDay
