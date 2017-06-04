@@ -16,7 +16,6 @@
 		props: ['dayData', 'dayIndex', 'today'],
 		created() {
 			this.addMonth();
-			console.log(this.dayData);
 		},
 		methods: {
 			addMonth() {

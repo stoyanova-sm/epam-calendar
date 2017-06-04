@@ -7,13 +7,13 @@
 			</div>
 		</div>
 
-		<div v-if="tasks.length > 5" class="task task-more">
+		<div v-if="tasks.length > 5" v-on:click="showMoreTasks = !showMoreTasks" class="task task-more">
 			<div class="task-contents">
-				<a href="#">{{tasks.length - 4}} more items</a>
+				<a href="#" onclick="return false" class="task-contents">{{tasks.length - 4}} more items</a>
 			</div>
 		</div>
 
-		<div v-if="tasks.length > 5" class="task-more-container">
+		<div v-if="tasks.length > 5" v-show="showMoreTasks" class="task-more-container">
 			<a href="#" v-for="(task, index) in tasks" v-if="index > 3" v-bind:title="generateTaskTitle(task)">{{task.text}}</a>
 		</div>
 	</div>
@@ -23,6 +23,11 @@
 	export default {
 		name: 'day-tasks',
 		props: ['tasks'],
+		data() {
+			return {
+				showMoreTasks: false
+			}
+		},
 		methods: {
 			generateTaskTitle (task) {
 				//for title in <a>:
