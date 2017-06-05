@@ -11,6 +11,7 @@ function navAction() {
 	const show = document.querySelector('.show');
 	const calendar = document.querySelector('main');
 	show.addEventListener('click', () => {
+		event.preventDefault();
 		nav.classList.toggle('extended');
 		calendar.classList.toggle('extended');
 	})

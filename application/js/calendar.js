@@ -230,6 +230,7 @@ export default class Calendar {
 
 		for (const element of more) {
 			element.addEventListener('click', () => {
+				event.preventDefault();
 				const taskContainer = element.parentElement.querySelector('.task-more + .task-more-container');
 				taskContainer.classList.toggle('show-more');
 			})
