@@ -1,11 +1,9 @@
 <template>
-	<div>
 		<div class="main-content" :class="{'extended-left': extendedLeft, 'extended-right': extendedRight}">
 			<nav-menu></nav-menu>
 			<router-view :key="$route.path"></router-view>
 			<control></control>
 		</div>
-	</div>
 </template>
 
 <script>
