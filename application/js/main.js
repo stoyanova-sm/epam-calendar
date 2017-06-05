@@ -12,5 +12,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	controlAction();
 	navAction();
- })
+});
 
