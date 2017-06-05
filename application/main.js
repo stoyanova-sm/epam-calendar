@@ -29,6 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	new Vue({
 		el: '#calendarApp',
 		router,
-		render: h => h(App)
+		render: calendar => calendar(App)
 	});
 })
