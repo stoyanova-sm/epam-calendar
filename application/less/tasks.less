@@ -62,8 +62,13 @@
 				&::before {
 					content: "\f0d7";
 					font-family: FontAwesome;
-					margin-left: -2px;
 					padding-right: 4px;
+				}
+
+				&.rotate::before {
+					transform: rotate(180deg);
+					margin-left: -3px;
+					padding-left: 3px;
 				}
 			}
 

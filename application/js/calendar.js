@@ -233,6 +233,8 @@ export default class Calendar {
 				event.preventDefault();
 				const taskContainer = element.parentElement.querySelector('.task-more + .task-more-container');
 				taskContainer.classList.toggle('show-more');
+				const arrow = element.querySelector('a');
+				arrow.classList.toggle('rotate');
 			})
 		}
 	}
