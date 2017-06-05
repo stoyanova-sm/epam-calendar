@@ -112,9 +112,8 @@ export default class Calendar {
 
 		for(let i = 0; i < 35; i++) {
 			const element = this.calendarMap[i];
-			const nextElement = this.calendarMap[i+1];
 			this.calcTaskDurationForHtml(element);
-			this.checkMonth(element, nextElement, i);
+			this.addMonth(element, i);
 
 			const template = `
 				<div class="day-wrapper">
@@ -157,16 +156,15 @@ export default class Calendar {
 		}
 	}
 
-	checkMonth(element, nextElement, i){ // adds month to date with month change
-		if (i < 34 && element.dateObj.getDate() > nextElement.dateObj.getDate()) {
-			if (i < 7) {
-				element.month = element.dateObj.toLocaleString('en-GB', {month: 'short'});
-			} else if (i > 27) {
-				nextElement.month = nextElement.dateObj.toLocaleString('en-GB', {month: 'short'});
-			}
+	addMonth(element, i) {
+		const lastDayInMonth = new Date(element.dateObj.getFullYear(), element.dateObj.getMonth() + 1, 0);
+		const firstDayInMonth = new Date(element.dateObj.getFullYear(), element.dateObj.getMonth(), 1);
+		if (i < 7 && lastDayInMonth.getTime() === element.dateTime) {
+			element.month = element.dateObj.toLocaleString('en-GB', {month: 'short'});
+		} else if (i > 27 && firstDayInMonth.getTime() === element.dateTime) {
+			element.month = element.dateObj.toLocaleString('en-GB', {month: 'short'});
 		}
 	}
-
 
 	getTasksHtml(element) {
 		const htmlOutput = [];
