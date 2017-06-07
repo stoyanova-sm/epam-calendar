@@ -1,39 +1,92 @@
 [{
+  "dateTime": 1438549200000,
+  "tasks": [{
+    "text": "Letter #01-01 «Whatever» from Organization 1 to EPAM",
+    "color": "green",
+    "duration": 3,
+    "startTime": 1438585200000,
+    "endTime": 1438855200000
+  }]
+},{
+  "dateTime": 1438894800000,
+  "tasks": [{
+    "text": "Letter #01-01 «Whatever» from Organization 1 to EPAM",
+    "color": "yellow",
+    "duration": 3,
+    "startTime": 1438934400000,
+    "endTime": 1439215200000
+  },{
+    "text": "Letter #01-01 «Whatever» from Organization 1 to EPAM",
+    "color": "yellow",
+    "duration": 5,
+    "startTime": 1438938000000,
+    "endTime": 1439377200000
+  }]
+},{
+  "dateTime": 1439154000000,
+  "tasks": [{
+    "text": "Letter #01-01 «Whatever» from Organization 1 to EPAM",
+    "color": "red",
+    "duration": 3,
+    "startTime": 1439190000000,
+    "endTime": 1439478000000
+  },{
+    "text": "Letter #01-01 «Whatever» from Organization 1 to EPAM",
+    "color": "violet",
+    "duration": 1,
+    "startTime": 1439193600000,
+    "endTime": 1439218800000
+  },{
+    "text": "Letter #01-01 «Whatever» from Organization 1 to EPAM",
+    "color": "teal",
+    "duration": 2,
+    "startTime": 1439197200000,
+    "endTime": 1439391600000
+  },{
+    "text": "Letter #01-01 «Whatever» from Organization 1 to EPAM",
+    "color": "green",
+    "duration": 2,
+    "startTime": 1439200800000,
+    "endTime": 1439391600000
+  },{
+    "text": "Letter #01-01 «Whatever» from Organization 1 to EPAM",
+    "color": "yellow",
+    "duration": 2,
+    "startTime": 1439200800000,
+    "endTime": 1439391600000
+  }]
+},{
   "dateTime": 1493586000000,
   "tasks": [{
     "text": "Letter #01-01 «Whatever» from Organization 1 to EPAM",
-    "color": "green",
+    "color": "teal",
     "duration": 5,
-    "startTime": 1493643633000,
-    "endTime": 1494086433000
-  }, {
-    "text": "Letter #01-01 «Whatever» from Organization 1 to EPAM",
-    "color": "green",
-    "duration": 3
+    "startTime": 1493625600000,
+    "endTime":1494086433000
   },{
     "text": "Letter #01-01 «Whatever» from Organization 1 to EPAM",
     "color": "green",
-    "duration": 4
+    "duration": 3,
+    "startTime": 1493629200000,
+    "endTime": 1493913600000
+  },{
+    "text": "Letter #01-01 «Whatever» from Organization 1 to EPAM",
+    "color": "yellow",
+    "duration": 4,
+    "startTime": 1493632800000,
+    "endTime": 1493974800000
   },{
     "text": "Letter #01-01 «Whatever» from Organization 1 to EPAM",
     "color": "red",
-    "duration": 9
+    "duration": 9,
+    "startTime": 1493636400000,
+    "endTime": 1494417600000
   },{
     "text": "Letter #01-01 «Whatever» from Organization 1 to EPAM",
     "color": "green",
-    "duration": 3
-  }]
-},{
-  "dateTime": 1494104400000,
-  "tasks": [{
-    "text": "Letter #01-01 «Whatever» from Organization 1 to EPAM",
-    "color": "yellow",
-    "duration": 3
-
-  }, {
-    "text": "Letter #01-01 «Whatever» from Organization 1 to EPAM",
-    "color": "yellow",
-    "duration": 5
+    "duration": 3,
+    "startTime": 1493643633000,
+    "endTime": 1493917200000
   }]
 },{
   "dateTime": 1494363600000,
@@ -51,7 +104,7 @@
     "endTime": 1494946800000
   },{
     "text": "Letter #01-01 «Whatever» from Organization 1 to EPAM",
-    "color": "yellow",
+    "color": "red",
     "duration": 6,
     "startTime": 1494421200000,
     "endTime": 1494946800000
@@ -63,19 +116,19 @@
     "endTime": 1494946800000
   },{
     "text": "Letter #01-01 «Whatever» from Organization 1 to EPAM",
-    "color": "yellow",
+    "color": "violet",
     "duration": 6,
     "startTime": 1494421200000,
     "endTime": 1494946800000
   }, {
     "text": "Letter #01-01 «Whatever» from Organization 1 to EPAM",
-    "color": "yellow",
+    "color": "green",
     "duration": 6,
     "startTime": 1494421200000,
     "endTime": 1494946800000
   },{
     "text": "Letter #01-01 «Whatever» from Organization 1 to EPAM",
-    "color": "yellow",
+    "color": "teal",
     "duration": 6,
     "startTime": 1494421200000,
     "endTime": 1494946800000
