@@ -23,7 +23,6 @@
     "postcss-loader": "^2.0.5",
     "strict-loader": "^1.2.0",
     "style-loader": "^0.17.0",
-    "url-loader": "^0.5.8",
     "webpack": "^2.5.1",
     "whatwg-fetch": "^2.0.3"
   },

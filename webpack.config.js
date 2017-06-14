@@ -21,7 +21,7 @@ module.exports = {
 			use: [{
 				loader: 'strict-loader'
 			}, {
-				loader: 'babel-loader?optional[]=runtime', //вспомогательный функционал babel вынесен в отдельный модуль
+				loader: 'babel-loader',
 				options: {
 					presets: ['es2015']
 				}
