@@ -1,7 +1,7 @@
 <template>
     <section v-on:click="expandControl" :class="{'control-extended': showControl}" class="control">
         <h1>On control</h1>
-        <section class="list">
+        <div class="list">
             <div>
                 <div class="list-number">01-01</div>
                 <div class="list-type">Letter</div>
@@ -27,7 +27,7 @@
                 <div  class="list-type">Request</div>
                 <div  class="list-content">Gimme Fuel</div>
             </div>
-        </section>
+        </div>
     </section>
 </template>
 

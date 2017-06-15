@@ -8,7 +8,7 @@
 		</header>
 
 		<section class="main-calendar">
-			<section class="weekdays">
+			<div class="weekdays">
 				<div>Monday</div>
 				<div>Tuesday</div>
 				<div>Wednesday</div>
@@ -16,11 +16,11 @@
 				<div>Friday</div>
 				<div>Saturday</div>
 				<div>Sunday</div>
-			</section>
+			</div>
 
-			<section class="net">
+			<div class="net">
 				<calendar-day v-for="(day, index) in calendarMap" :dayData="day" :dayIndex="index" :today="getToday" :key="day.dateTime"></calendar-day>
-			</section>
+			</div>
 		</section>
 	</main>
 </template>

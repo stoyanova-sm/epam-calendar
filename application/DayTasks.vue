@@ -1,6 +1,7 @@
 <template>
 	<div class="tasks">
-		<div v-if="(tasks.length > 5 && index < 4) || tasks.length <= 5" v-for="(task, index) in tasks" :class="`task task-duration-${task.duration} ${(task.extended)? 'task-extended':''} task-color-${task.color}`">
+		<div v-if="(tasks.length > 5 && index < 4) || tasks.length <= 5" v-for="(task, index) in tasks"
+			 :class="`task task-duration-${task.duration} ${(task.extended)? 'task-extended':''} task-color-${task.color}`">
 			<div class="task-label"></div>
 			<div class="task-contents">
 				<a href="#" v-bind:title="generateTaskTitle(task)">{{task.text}}</a>
@@ -36,7 +37,6 @@
 				const end = new Date(task.endTime);
 				const endDate = end.toLocaleString('en-GB', {day: 'numeric', month: '2-digit', year: '2-digit'});
 				const endHour = end.toLocaleString('en-GB', {hour: '2-digit', minute: '2-digit'});
-				///TODO: new line in title
 				return `${task.text} Created on: ${startDate} ${startHour}. Complete till: ${endDate} ${endHour}`;
 			}
 		}
