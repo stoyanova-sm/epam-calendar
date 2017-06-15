@@ -8,7 +8,7 @@ export default class Calendar {
 
 	initialize() { //draw the calendar and add events to switch months
 		this.setEvents();
-		return this.draw();
+		this.draw();
 	}
 
 	setEvents() { //add events to switch months by clicking arrow buttons
@@ -78,7 +78,7 @@ export default class Calendar {
 		date.setDate(lastMondayOfPreviousMonth);
 	}
 
-	renderTasks() { ///TODO: add catch errors,  json()
+	renderTasks() {
 		return fetch('/build/data/tasksObject.json')
 			.then(response => {
 				if(response.status === 200) {
@@ -128,6 +128,7 @@ export default class Calendar {
 		}
 
 		calendar.innerHTML = calendarHtml.join(''); //combine the array of templates into a string
+		console.log(calendarHtml.join(''));
 	}
 
 	calcTaskDurationForHtml(element) {
@@ -203,10 +204,6 @@ export default class Calendar {
 						</div> 
 					</div>`
 				);
-			}
-
-			if(i === tasksLength-1 && tasksLength > 5) {
-				htmlOutput.push('</div>');
 			}
 		}
 
